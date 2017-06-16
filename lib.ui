@@ -347,6 +347,19 @@
     <string>History</string>
    </property>
   </widget>
+  <widget class="QPushButton" name="contact">
+   <property name="geometry">
+    <rect>
+     <x>490</x>
+     <y>490</y>
+     <width>81</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Contact</string>
+   </property>
+  </widget>
  </widget>
  <resources/>
  <connections/>

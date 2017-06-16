@@ -10,12 +10,13 @@
 #include <QMessageBox>
 #include <QPixmap>
 
-//#include "global_objects.h"
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
+    connect(ui->username_edit, SIGNAL(returnPressed()),ui->login,SIGNAL(clicked()));
+    connect(ui->password_edit, SIGNAL(returnPressed()),ui->login,SIGNAL(clicked()));
     this->setWindowTitle("Sign in");
     if(db.open()) ui->status->setText("Connected");
     QPixmap pix(":/new/image/texture.jpg");

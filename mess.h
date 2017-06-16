@@ -1,5 +1,6 @@
-#ifndef LIBRARY_H
-#define LIBRARY_H
+#ifndef MESS_H
+#define MESS_H
+
 #include <QDialog>
 #include <QTreeWidget>
 #include <QDialog>
@@ -10,14 +11,13 @@
 #include <QFile>
 #include <QSqlQuery>
 #include <QDebug>
+#include <QListWidget>
 #include "lib.h"
-#include <QDialog>
-#include "add_book.h"
 namespace Ui {
-class library;
+class mess;
 }
 
-class library : public QDialog
+class mess : public QDialog
 {
     Q_OBJECT
 
@@ -36,28 +36,15 @@ public:
         if(db.open()) { qDebug()<<("Connected"); return true;}
         else return false;
     }
+    void AddRoot(QString username, QString time, QString title, QString status);
+    explicit mess(QWidget *parent = 0);
+    ~mess();
 
-    explicit library(QWidget *parent = 0);
-    ~library();
-    void Khoitao();
-    void AddRoot(QString id,QString name,QString author);
 private slots:
-    void on_tree_itemClicked(QTreeWidgetItem *item, int column);
-
-    void on_change_detail_clicked();
-
-    void on_update_clicked();
-
     void on_back_clicked();
 
-    void on_remove_clicked();
-
-    void on_add_clicked();
-
-    void on_search_button_clicked();
-
 private:
-    Ui::library *ui;
+    Ui::mess *ui;
 };
 
-#endif // LIBRARY_H
+#endif // MESS_H

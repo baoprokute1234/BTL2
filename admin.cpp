@@ -121,3 +121,10 @@ void admin::on_delete_2_clicked()
     Conclose();
 }
 
+void admin::on_message_clicked()
+{
+    this->hide();
+    mess message;
+    message.setModal(true);
+    message.exec();
+}

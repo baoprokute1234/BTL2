@@ -13,7 +13,8 @@
 #include "mainwindow.h"
 #include "admin.h"
 #include "library.h"
-
+#include "mess.h"
+#include "contact.h"
 namespace Ui {
 class lib;
 }
@@ -62,6 +63,8 @@ private slots:
     void on_borrow_button_clicked();
 
     void on_history_clicked();
+
+    void on_contact_clicked();
 
 private:
     Ui::lib *ui;

@@ -9,8 +9,8 @@ lib::lib(QWidget *parent) :
     QDialog(parent),
     ui(new Ui::lib)
 {
-    //QString temp = *tmp;
     ui->setupUi(this);
+    connect(ui->search_edit, SIGNAL(returnPressed()),ui->search_button,SIGNAL(clicked()));
     ui->tree->header()->resizeSection(1,350);
     ui->cart->header()->hide();
     ui->cart->header()->resizeSection(1,45);
@@ -21,7 +21,7 @@ lib::lib(QWidget *parent) :
     query.exec();
     query.next();
     QString username=query.value(0).toString();
-    query1.prepare("select book_id,book_name,book_author from books");
+    query1.prepare("select book_id,book_name,book_author from books COLLATE NOCASE");
     query1.exec();
     while(query1.next())
     {
@@ -38,6 +38,7 @@ lib::lib(QWidget *parent) :
     qDebug() << qry.value("user_role").toInt();
     if(qry.value("user_role").toInt()==3||qry.value("user_role").toInt()==2) ui->admin->setVisible(false);
     if(qry.value("user_role").toInt()==1||qry.value("user_role").toInt()==3) ui->library->setVisible(false);
+    if(qry.value("user_role").toInt()==1||qry.value("user_role").toInt()==2) ui->history->setVisible(false);
     Conclose();
     //connect(ui->info_button,QPushButton::clicked(),this,lib::info_clicked(tmp));
 
@@ -69,7 +70,7 @@ void lib::on_search_button_clicked()
 {
     Conopen();
     QSqlQuery query1(db);
-    query1.prepare("select book_id,book_name,book_author from books");
+    query1.prepare("select book_id,book_name,book_author from books COLLATE NOCASE");
     query1.exec();
     QString search;
     search=ui->search_edit->text();
@@ -185,7 +186,7 @@ void lib::on_borrow_button_clicked()
         QMessageBox message;
         message.setText("Borrow Successful");
         message.exec();
-        for(int i=0;i<ui->cart->topLevelItemCount()-1;i++)
+        for(int i=0;i<ui->cart->topLevelItemCount();i++)
         {
             QTreeWidgetItem *item=ui->cart->topLevelItem(i);
             QString book_id=item->text(0);
@@ -226,4 +227,11 @@ void lib::on_history_clicked()
     QString borrow_date=query2.value(2).toString();
 
     Conclose();
+}
+
+void lib::on_contact_clicked()
+{
+    contact cont;
+    cont.setModal(true);
+    cont.exec();
 }

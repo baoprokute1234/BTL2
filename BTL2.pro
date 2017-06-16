@@ -31,7 +31,9 @@ SOURCES += \
     admin.cpp \
     library.cpp \
     add_user.cpp \
-    add_book.cpp
+    add_book.cpp \
+    mess.cpp \
+    contact.cpp
 
 HEADERS += \
         mainwindow.h \
@@ -40,7 +42,9 @@ HEADERS += \
     admin.h \
     library.h \
     add_user.h \
-    add_book.h
+    add_book.h \
+    mess.h \
+    contact.h
 
 FORMS += \
     lib.ui \
@@ -49,7 +53,9 @@ FORMS += \
     admin.ui \
     library.ui \
     add_user.ui \
-    add_book.ui
+    add_book.ui \
+    mess.ui \
+    contact.ui
 
 RESOURCES += \
     design.qrc

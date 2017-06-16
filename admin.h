@@ -61,6 +61,8 @@ private slots:
 
     void on_delete_2_clicked();
 
+    void on_message_clicked();
+
 private:
     Ui::admin *ui;
 };

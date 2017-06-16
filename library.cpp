@@ -6,6 +6,7 @@ library::library(QWidget *parent) :
     ui(new Ui::library)
 {
     ui->setupUi(this);
+    connect(ui->search_edit, SIGNAL(returnPressed()),ui->search_button,SIGNAL(clicked()));
     ui->tree->header()->resizeSection(1,350);
     this->setWindowTitle("Main Window");
     Conopen();
@@ -65,7 +66,8 @@ void library::on_tree_itemClicked(QTreeWidgetItem *item, int column)
         ui->stock->setText(qry.value(3).toString());
         ui->prize->setText(qry.value(4).toString());
         ui->left->setText(qry.value(5).toString());
-        ui->date_in->setText(qry.value(6).toString());
+        QDate date=QDate::fromString(qry.value(6).toString(),"dd/MM/yyyy");
+        ui->date_in->setDate(date);
     }
     Conclose();
 }
@@ -89,7 +91,7 @@ void library::on_update_clicked()
     QString stock=ui->left->text();
     QString left=ui->left->text();
     QString prize=ui->prize->text();
-    QString date_in=ui->date_in->text();
+    QString date_in=ui->date_in->date().toString("dd/MM/yyyy");
     QSqlQuery qry(db);
     qry.prepare("update books set book_name='"+name+"',book_author='"+author+"',book_prize='"+prize+"',book_stock='"+stock+"',book_left='"+left+"',book_date_in='"+date_in+"' where book_id='"+id+"'");
     qry.exec();
@@ -133,4 +135,26 @@ void library::on_add_clicked()
     add_book add;
     add.setModal(true);
     add.exec();
+}
+
+void library::on_search_button_clicked()
+{
+    Conopen();
+    QSqlQuery query1(db);
+    query1.prepare("select book_id,book_name,book_author from books");
+    query1.exec();
+    QString search;
+    search=ui->search_edit->text();
+    ui->tree->clear();
+    while(query1.next())
+    {
+        QString id = query1.value(0).toString();
+        QString name = query1.value(1).toString();
+        QString author = query1.value(2).toString();
+        if(name.contains(search)||author.contains(search))
+        {
+            AddRoot(id,name,author);
+        }
+    }
+    Conclose();
 }
