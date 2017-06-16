@@ -21,7 +21,7 @@ lib::lib(QWidget *parent) :
     query.exec();
     query.next();
     QString username=query.value(0).toString();
-    query1.prepare("select book_id,book_name,book_author from books COLLATE NOCASE");
+    query1.prepare("select book_id,book_name,book_author from books");
     query1.exec();
     while(query1.next())
     {

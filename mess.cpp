@@ -50,3 +50,19 @@ void mess::on_back_clicked()
     ad.setModal(true);
     ad.exec();
 }
+
+void mess::on_mess_preview_itemClicked(QTreeWidgetItem *item)
+{
+    QString username=item->text(0);
+    Conopen();
+    QSqlQuery qry(db),qry1(db);
+    qry1.prepare("select * from users where user_name='"+username+"'");
+    qry1.exec();
+    qry1.next();
+    QString id = qry1.value(0).toString();
+    qry.prepare("select * from message_to_admin where mess_from_user_id='"+id+"'");
+    qry.exec();
+    qry.next();
+    ui->mess_box->setText(qry.value(3).toString());
+    Conclose();
+}

@@ -43,6 +43,8 @@ public:
 private slots:
     void on_back_clicked();
 
+    void on_mess_preview_itemClicked(QTreeWidgetItem *item);
+
 private:
     Ui::mess *ui;
 };
