@@ -1,0 +1,8 @@
+<RCC>
+    <qresource prefix="/new">
+        <file>image/texture.jpg</file>
+    </qresource>
+    <qresource prefix="/new/db">
+        <file>db/library.db</file>
+    </qresource>
+</RCC>

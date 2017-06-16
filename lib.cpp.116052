@@ -1,0 +1,103 @@
+#include "lib.h"
+#include "ui_lib.h"
+#include <QMessageBox>
+#include <QDialog>
+#include <QTreeWidget>
+#define MIN(x,y) ((x) < (y) ? (x) : (y))
+lib::lib(QWidget *parent) :
+    QDialog(parent),
+    ui(new Ui::lib)
+{
+    ui->setupUi(this);
+    ui->tree->header()->resizeSection(0,300);
+    this->setWindowTitle("Main Window");
+    /*QSqlQueryModel *modal = new QSqlQueryModel();
+    Conopen();
+    QSqlQuery query1(db);
+    query1.prepare("select book_name,book_author from books");
+    query1.exec();
+    modal->setQuery(query1);
+    ui->tree->setModel(modal);
+    Conclose();*/
+    Conopen();
+    QSqlQuery query1(db);
+    query1.prepare("select book_name,book_author from books");
+    query1.exec();
+    while(query1.next())
+    {
+        QString name = query1.value(0).toString();
+        QString author = query1.value(1).toString();
+        AddRoot(name,author);
+    }
+    Conclose();
+}
+
+lib::~lib()
+{
+    delete ui;
+}
+
+void lib::AddRoot(QString name,QString author)
+{
+    QTreeWidgetItem *item = new QTreeWidgetItem(ui->tree);
+    item->setText(0,name);
+    item->setText(1,author);
+    ui->tree->addTopLevelItem(item);
+}
+
+
+
+/*int distance(QString s, QString t)
+{
+    qDebug() << s << '\n';
+    qDebug() << t << '\n';
+    int d[100][100];
+    int i,j,m,n,temp,tracker;
+    m = s.length();
+    n = t.length();
+    for(i=0;i<=m;i++)
+    d[0][i] = i;
+    for(j=0;j<=n;j++)
+    d[j][0] = j;
+
+    for (j=1;j<=m;j++)
+    {
+        for(i=1;i<=n;i++)
+        {
+            if(s[i-1] == t[j-1])
+            {
+                tracker = 0;
+            }
+            else
+            {
+                tracker = 1;
+            }
+            temp = MIN((d[i-1][j]+1),(d[i][j-1]+1));
+            d[i][j] = MIN(temp,(d[i-1][j-1]+tracker));
+        }
+    }
+    qDebug() << d[n][m];
+    return d[n][m];
+}*/
+
+void lib::on_search_button_clicked()
+{
+    Conopen();
+    QSqlQuery query1(db);
+    query1.prepare("select book_name,book_author from books");
+    query1.exec();
+    QString search;
+    search=ui->search_edit->text();
+    ui->tree->clear();
+    while(query1.next())
+    {
+        QString name = query1.value(0).toString();
+        QString author = query1.value(1).toString();
+        if(name.contains(search)||author.contains(search))
+        {
+
+            AddRoot(name,author);
+        }
+    }
+    Conclose();
+}
