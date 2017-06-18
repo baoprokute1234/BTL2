@@ -26,7 +26,7 @@ public:
         if(db.open()) { qDebug()<<("Connected"); return true;}
         else return false;
     }
-    void AddRoot(QString id, QString name, QString author,QString time, QString status);
+    void AddRoot(QString id, QString name, QString author, QString time, QString status, QString borrow_id);
     explicit history(QWidget *parent = 0);
     ~history();
 
@@ -34,6 +34,10 @@ private slots:
     void on_back_clicked();
 
     void on_update_clicked();
+
+    void on_return_book_clicked();
+
+    void on_report_lost_clicked();
 
 private:
     Ui::history *ui;

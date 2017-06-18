@@ -1,10 +1,8 @@
 #include "lib.h"
 #include "ui_lib.h"
-
 #include <QDialog>
 #include <QTreeWidget>
 #include <QDateTime>
-//#define MIN(x,y) ((x) < (y) ? (x) : (y))
 lib::lib(QWidget *parent) :
     QDialog(parent),
     ui(new Ui::lib)
@@ -98,7 +96,7 @@ void lib::on_search_button_clicked()
 {
     Conopen();
     QSqlQuery query1(db);
-    query1.prepare("select book_id,book_name,book_author from books COLLATE NOCASE");
+    query1.prepare("select book_id,book_name,book_author from books");
     query1.exec();
     QString search;
     search=ui->search_edit->text();
@@ -136,6 +134,17 @@ void lib::on_tree_itemClicked(QTreeWidgetItem *item)
 
 void lib::on_add_button_clicked()
 {
+    QString book_remain = ui->book_remain->text();
+    int remain=book_remain.toInt();
+    qDebug() << remain;
+    if(remain <=1)
+    {
+        QMessageBox message;
+        message.setText("This book cannot be borrowed");
+        message.exec();
+    }
+    else
+    {
     Conopen();
     QTreeWidgetItem *item=ui->tree->currentItem();
     QString current = item->text(0);
@@ -149,7 +158,7 @@ void lib::on_add_button_clicked()
     Conclose();
     ui->cart->hideColumn(0);
 }
-
+}
 void lib::on_remove_button_clicked()
 {
     QTreeWidgetItem *item=ui->cart->currentItem();
@@ -218,7 +227,7 @@ void lib::on_borrow_button_clicked()
         {
             QTreeWidgetItem *item=ui->cart->topLevelItem(i);
             QString book_id=item->text(0);
-            query.prepare("insert into lend (lend_borrow_id, lend_book_id) values ('"+borrow_id+"','"+book_id+"')");
+            query.prepare("insert into lend (lend_borrow_id, lend_book_id,lend_stt) values ('"+borrow_id+"','"+book_id+"','Waiting for Confirmation')");
             query.exec();
             qery1.prepare("select book_left from books where book_id='"+book_id+"'");
             qery1.exec();

@@ -48,10 +48,15 @@ history::history(QWidget *parent) :
             query4.prepare("select * from books where book_id='"+query3.value(2).toString()+"'");
             query4.exec();
             query4.next();
-            AddRoot(query4.value(0).toString(),query4.value(1).toString(),query4.value(2).toString(),borrow_date,query2.value(3).toString());
+            QSqlQuery query5;
+            query5.prepare("select * from lend where lend_borrow_id='"+borrow_id+"' and lend_book_id='"+query4.value(0).toString()+"'");
+            query5.exec();
+            query5.next();
+            AddRoot(query4.value(0).toString(),query4.value(1).toString(),query4.value(2).toString(),borrow_date,query5.value(3).toString(),query3.value(1).toString());
         }
     }
     ui->tree->hideColumn(0);
+    ui->tree->hideColumn(5);
     ui->update->animateClick();
     Conclose();
 }
@@ -69,7 +74,7 @@ void history::on_back_clicked()
     libr.exec();
 }
 
-void history::AddRoot(QString id,QString name,QString author,QString time,QString status)
+void history::AddRoot(QString id,QString name,QString author,QString time,QString status,QString borrow_id)
 {
     QTreeWidgetItem *item = new QTreeWidgetItem(ui->tree);
     item->setText(0,id);
@@ -77,6 +82,7 @@ void history::AddRoot(QString id,QString name,QString author,QString time,QStrin
     item->setText(2,author);
     item->setText(3,time);
     item->setText(4,status);
+    item->setText(5,borrow_id);
     ui->tree->addTopLevelItem(item);
 }
 
@@ -110,8 +116,64 @@ void history::on_update_clicked()
             query4.prepare("select * from books where book_id='"+query3.value(2).toString()+"'");
             query4.exec();
             query4.next();
-            AddRoot(query4.value(0).toString(),query4.value(1).toString(),query4.value(2).toString(),borrow_date,query2.value(3).toString());
+            QSqlQuery query5;
+            query5.prepare("select * from lend where lend_borrow_id='"+borrow_id+"' and lend_book_id='"+query4.value(0).toString()+"'");
+            query5.exec();
+            query5.next();
+            AddRoot(query4.value(0).toString(),query4.value(1).toString(),query4.value(2).toString(),borrow_date,query5.value(3).toString(),query3.value(1).toString());
         }
     }
     Conclose();
+}
+
+void history::on_return_book_clicked()
+{
+    QTreeWidgetItem *item=ui->tree->currentItem();
+    QString book_id=item->text(0);
+    QString borrow_id=item->text(5);
+    Conopen();
+    QSqlQuery qery1(db),qry(db);
+    qery1.prepare("select book_left from books where book_id='"+book_id+"'");
+    qery1.exec();
+    qery1.next();
+    int left=qery1.value(0).toInt();
+    qry.prepare("update books set book_left=:left where book_id='"+book_id+"'");
+    qry.bindValue(":left",QString::number(left+1));
+    qry.exec();
+    QSqlQuery qry1(db);
+    qry1.prepare("update lend set lend_stt='Returned' where lend_book_id='"+book_id+"' and lend_borrow_id='"+borrow_id+"'");
+    qry1.exec();
+    QSqlQuery query(db);
+    query.prepare("select * from lend where lend_borrow_id='"+borrow_id+"'");
+    query.exec();
+    int count=0;
+    while(query.next())
+    {
+        QString status=query.value(3).toString();
+        if(status.compare("Returned")!=0) count++;
+    }
+    if(count==0)
+    {
+        QSqlQuery query1(db);
+        query1.prepare("update borrow set borrow_stt='Returned' where borrow_id='"+borrow_id+"'");
+        query1.exec();
+    }
+    Conclose();
+    ui->update->animateClick();
+}
+
+void history::on_report_lost_clicked()
+{
+    QMessageBox message;
+    message.setText("Please go see the Librarian for indemnify");
+    message.exec();
+    QTreeWidgetItem *item = ui->tree->currentItem();
+    QString borrow_id=item->text(5);
+    QString book_id=item->text(0);
+    Conopen();
+    QSqlQuery qry(db);
+    qry.prepare("update lend set lend_stt='Returned' where lend_borrow_id='"+borrow_id+"' and lend_book_id='"+book_id+"'");
+    qry.exec();
+    Conclose();
+    ui->update->animateClick();
 }

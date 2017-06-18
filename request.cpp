@@ -80,9 +80,11 @@ void request::on_list_itemClicked(QTreeWidgetItem *item)
 void request::on_accept_clicked()
 {
     Conopen();
-    QSqlQuery qry(db);
+    QSqlQuery qry(db),qry1(db);
     qry.prepare("update borrow set borrow_stt='Not Returned' where borrow_id='"+borrow_id+"'");
     qry.exec();
+    qry1.prepare("update lend set lend_stt='Not Returned' where lend_borrow_id='"+borrow_id+"'");
+    qry1.exec();
     Conclose();
     QMessageBox message;
     message.setText("Accepted");
@@ -127,9 +129,11 @@ void request::on_deny_clicked()
         qry.bindValue(":left",QString::number(left+1));
         qry.exec();
     }
-    QSqlQuery qry1(db);
+    QSqlQuery qry1(db),qry2(db);
     qry1.prepare("update borrow set borrow_stt='Denied' where borrow_id='"+borrow_id+"'");
     qry1.exec();
+    qry2.prepare("update lend set lend_stt='Denied' where lend_borrow_id='"+borrow_id+"'");
+    qry2.exec();
     Conclose();
     QMessageBox message;
     message.setText("Denied");
