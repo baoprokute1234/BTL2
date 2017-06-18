@@ -51,7 +51,7 @@ void library::AddRoot(QString id,QString name,QString author)
 }
 
 
-void library::on_tree_itemClicked(QTreeWidgetItem *item, int column)
+void library::on_tree_itemClicked(QTreeWidgetItem *item)
 {
     QString current = item->text(0);
     Conopen();

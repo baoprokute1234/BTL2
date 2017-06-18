@@ -360,6 +360,45 @@
     <string>Contact</string>
    </property>
   </widget>
+  <widget class="QPushButton" name="message">
+   <property name="geometry">
+    <rect>
+     <x>580</x>
+     <y>490</y>
+     <width>75</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Message</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="lib_message">
+   <property name="geometry">
+    <rect>
+     <x>580</x>
+     <y>490</y>
+     <width>75</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Message</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="request">
+   <property name="geometry">
+    <rect>
+     <x>490</x>
+     <y>490</y>
+     <width>81</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Request</string>
+   </property>
+  </widget>
  </widget>
  <resources/>
  <connections/>

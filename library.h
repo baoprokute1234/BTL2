@@ -42,7 +42,7 @@ public:
     void Khoitao();
     void AddRoot(QString id,QString name,QString author);
 private slots:
-    void on_tree_itemClicked(QTreeWidgetItem *item, int column);
+    void on_tree_itemClicked(QTreeWidgetItem *item);
 
     void on_change_detail_clicked();
 

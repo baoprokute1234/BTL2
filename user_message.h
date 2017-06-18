@@ -1,23 +1,13 @@
-#ifndef MESS_H
-#define MESS_H
+#ifndef USER_MESSAGE_H
+#define USER_MESSAGE_H
 
 #include <QDialog>
-#include <QTreeWidget>
-#include <QDialog>
-#include <QSqlDatabase>
-#include <QtSql>
-#include <QSqlError>
-#include <QDir>
-#include <QFile>
-#include <QSqlQuery>
-#include <QDebug>
-#include <QListWidget>
-#include "lib.h"
+#include <lib.h>
 namespace Ui {
-class mess;
+class user_message;
 }
 
-class mess : public QDialog
+class user_message : public QDialog
 {
     Q_OBJECT
 
@@ -36,20 +26,20 @@ public:
         if(db.open()) { qDebug()<<("Connected"); return true;}
         else return false;
     }
-    void AddRoot(QString id,QString username, QString time, QString title, QString status);
+    void AddRoot(QString id,QString title,QString time,QString from,QString status);
     void ReloadView();
-    explicit mess(QWidget *parent = 0);
-    ~mess();
+    explicit user_message(QWidget *parent = 0);
+    ~user_message();
 
 private slots:
-    void on_back_clicked();
-
     void on_mess_preview_itemClicked(QTreeWidgetItem *item);
+
+    void on_back_clicked();
 
     void on_reply_clicked();
 
 private:
-    Ui::mess *ui;
+    Ui::user_message *ui;
 };
 
-#endif // MESS_H
+#endif // USER_MESSAGE_H

@@ -1,9 +1,9 @@
-#include "mess.h"
-#include "ui_mess.h"
-QString mess_id;
-mess::mess(QWidget *parent) :
+#include "lib_message.h"
+#include "ui_lib_message.h"
+QString mess_id_1;
+lib_message::lib_message(QWidget *parent) :
     QDialog(parent),
-    ui(new Ui::mess)
+    ui(new Ui::lib_message)
 {
     ui->setupUi(this);
     ui->mess_preview->header()->resizeSection(1,100);
@@ -11,12 +11,12 @@ mess::mess(QWidget *parent) :
     ReloadView();
 }
 
-mess::~mess()
+lib_message::~lib_message()
 {
     delete ui;
 }
 
-void mess::AddRoot(QString id,QString username,QString time,QString title,QString status)
+void lib_message::AddRoot(QString id,QString username,QString time,QString title,QString status)
 {
     QTreeWidgetItem *item = new QTreeWidgetItem(ui->mess_preview);
     item->setText(0,id);
@@ -27,53 +27,51 @@ void mess::AddRoot(QString id,QString username,QString time,QString title,QStrin
     ui->mess_preview->addTopLevelItem(item);
 }
 
-void mess::on_back_clicked()
+void lib_message::on_back_clicked()
 {
     this->hide();
-    admin ad;
-    ad.setModal(true);
-    ad.exec();
+    lib libr;
+    libr.setModal(true);
+    libr.exec();
 }
 
-void mess::on_mess_preview_itemClicked(QTreeWidgetItem *item)
+void lib_message::on_mess_preview_itemClicked(QTreeWidgetItem *item)
 {
-    mess_id=item->text(0);
+    mess_id_1=item->text(0);
     Conopen();
     QSqlQuery qry(db),qry1(db);
-    qry.prepare("select * from message_to_admin where mess_id='"+mess_id+"'");
+    qry.prepare("select * from message_to_librarian where mess_id='"+mess_id_1+"'");
     qry.exec();
     qry.next();
     ui->mess_box->setText(qry.value(3).toString());
-    qry1.prepare("update message_to_admin set mess_status='Read' where mess_id='"+mess_id+"'");
+    qry1.prepare("update message_to_librarian set mess_status='Read' where mess_id='"+mess_id_1+"'");
     qry1.exec();
     Conclose();
     ReloadView();
 }
 
-void mess::on_reply_clicked()
+void lib_message::on_reply_clicked()
 {
     Conopen();
     QSqlQuery qry(db),qry1(db);
-    /*QTreeWidgetItem item = currentItem();
-    QString mess_id = item->text(0);*/
-    qry1.prepare("select * from message_to_admin where mess_id='"+mess_id+"'");
+    qry1.prepare("select * from message_to_librarian where mess_id='"+mess_id_1+"'");
     qry1.exec();
     qry1.next();
     QString id=qry1.value(1).toString();
     QString title=ui->title->text();
     QString content = ui->replay_edit->text();
     QString time=QDateTime::currentDateTime().toString("hh:mm:ss dd/MM/yyyy");
-    qry.prepare("insert into message_to_user (mess_to_user_id, mess_title, mess_content,mess_date ,mess_status,mess_from) values ('"+id+"','"+title+"', '"+content+"', '"+time+"', 'Unread', 'Admin')");
+    qry.prepare("insert into message_to_user (mess_to_user_id, mess_title, mess_content,mess_date ,mess_status,mess_from) values ('"+id+"','"+title+"', '"+content+"', '"+time+"', 'Unread', 'Librarian')");
     qry.exec();
     Conclose();
 }
 
-void mess::ReloadView()
+void lib_message::ReloadView()
 {
     ui->mess_preview->clear();
     Conopen();
     QSqlQuery qry(db),qry1(db);
-    qry.prepare("select * from message_to_admin");
+    qry.prepare("select * from message_to_librarian");
     qry.exec();
     while(qry.next())
     {
@@ -81,12 +79,12 @@ void mess::ReloadView()
         qry1.prepare("select * from users where user_id='"+id+"'");
         qry1.exec();
         qry1.next();
-        QString mess_id=qry.value(0).toString();
+        QString mess_from_id=qry.value(0).toString();
         QString username = qry1.value(1).toString();
         QString time = qry.value(4).toString();
         QString title = qry.value(2).toString();
         QString status = qry.value(5).toString();
-        AddRoot(mess_id,username,time,title,status);
+        AddRoot(mess_from_id,username,time,title,status);
     }
     ui->mess_preview->hideColumn(0);
     Conclose();

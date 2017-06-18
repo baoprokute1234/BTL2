@@ -18,12 +18,15 @@
     <rect>
      <x>524</x>
      <y>440</y>
-     <width>71</width>
+     <width>21</width>
      <height>23</height>
     </rect>
    </property>
+   <property name="autoFillBackground">
+    <bool>true</bool>
+   </property>
    <property name="text">
-    <string>Back</string>
+    <string/>
    </property>
    <property name="icon">
     <iconset>

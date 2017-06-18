@@ -1,23 +1,13 @@
-#ifndef CONTACT_H
-#define CONTACT_H
+#ifndef LIB_MESSAGE_H
+#define LIB_MESSAGE_H
 
 #include <QDialog>
-#include <QTreeWidget>
-#include <QDialog>
-#include <QSqlDatabase>
-#include <QtSql>
-#include <QSqlError>
-#include <QDir>
-#include <QFile>
-#include <QSqlQuery>
-#include <QDebug>
-#include <QListWidget>
 #include "lib.h"
 namespace Ui {
-class contact;
+class lib_message;
 }
 
-class contact : public QDialog
+class lib_message : public QDialog
 {
     Q_OBJECT
 
@@ -36,16 +26,20 @@ public:
         if(db.open()) { qDebug()<<("Connected"); return true;}
         else return false;
     }
-    explicit contact(QWidget *parent = 0);
-    ~contact();
 
+    explicit lib_message(QWidget *parent = 0);
+    ~lib_message();
+    void AddRoot(QString id,QString username,QString time,QString title,QString status);
+    void ReloadView();
 private slots:
-    void on_send_clicked();
+    void on_back_clicked();
 
-    //void on_send_to_currentIndexChanged(const QString &arg1);
+    void on_mess_preview_itemClicked(QTreeWidgetItem *item);
+
+    void on_reply_clicked();
 
 private:
-    Ui::contact *ui;
+    Ui::lib_message *ui;
 };
 
-#endif // CONTACT_H
+#endif // LIB_MESSAGE_H

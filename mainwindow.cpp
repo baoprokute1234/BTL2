@@ -21,6 +21,8 @@ MainWindow::MainWindow(QWidget *parent) :
     if(db.open()) ui->status->setText("Connected");
     QPixmap pix(":/new/image/texture.jpg");
     ui->label_2->setPixmap(pix);
+    /*QDate date(2012,12,10);
+    qDebug() << date.daysTo(QDate::currentDate());*/
 }
 
 MainWindow::~MainWindow()

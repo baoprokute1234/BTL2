@@ -9,7 +9,6 @@
 #include <QFile>
 #include <QSqlQuery>
 #include <QDebug>
-#include <QMessageBox>
 #include "info.h"
 #include "mainwindow.h"
 #include "admin.h"
@@ -18,8 +17,6 @@
 #include "contact.h"
 #include "user_message.h"
 #include "history.h"
-#include "lib_message.h"
-#include "request.h"
 namespace Ui {
 class lib;
 }
@@ -74,8 +71,6 @@ private slots:
     void on_message_clicked();
 
     void on_lib_message_clicked();
-
-    void on_request_clicked();
 
 private:
     Ui::lib *ui;

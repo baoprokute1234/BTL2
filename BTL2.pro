@@ -33,7 +33,11 @@ SOURCES += \
     add_user.cpp \
     add_book.cpp \
     mess.cpp \
-    contact.cpp
+    contact.cpp \
+    user_message.cpp \
+    lib_message.cpp \
+    history.cpp \
+    request.cpp
 
 HEADERS += \
         mainwindow.h \
@@ -44,7 +48,11 @@ HEADERS += \
     add_user.h \
     add_book.h \
     mess.h \
-    contact.h
+    contact.h \
+    user_message.h \
+    lib_message.h \
+    history.h \
+    request.h
 
 FORMS += \
     lib.ui \
@@ -55,7 +63,11 @@ FORMS += \
     add_user.ui \
     add_book.ui \
     mess.ui \
-    contact.ui
+    contact.ui \
+    user_message.ui \
+    lib_message.ui \
+    history.ui \
+    request.ui
 
 RESOURCES += \
     design.qrc

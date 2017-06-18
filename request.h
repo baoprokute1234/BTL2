@@ -1,23 +1,13 @@
-#ifndef CONTACT_H
-#define CONTACT_H
+#ifndef REQUEST_H
+#define REQUEST_H
 
 #include <QDialog>
-#include <QTreeWidget>
-#include <QDialog>
-#include <QSqlDatabase>
-#include <QtSql>
-#include <QSqlError>
-#include <QDir>
-#include <QFile>
-#include <QSqlQuery>
-#include <QDebug>
-#include <QListWidget>
 #include "lib.h"
 namespace Ui {
-class contact;
+class request;
 }
 
-class contact : public QDialog
+class request : public QDialog
 {
     Q_OBJECT
 
@@ -36,16 +26,23 @@ public:
         if(db.open()) { qDebug()<<("Connected"); return true;}
         else return false;
     }
-    explicit contact(QWidget *parent = 0);
-    ~contact();
+    void AddRoot(QString id,QString name,QString author);
+    void AddRootLite(QString borrow_id,QString request_from);
+    void ReloadView();
+    explicit request(QWidget *parent = 0);
+    ~request();
 
 private slots:
-    void on_send_clicked();
+    void on_back_clicked();
 
-    //void on_send_to_currentIndexChanged(const QString &arg1);
+    void on_list_itemClicked(QTreeWidgetItem *item);
+
+    void on_accept_clicked();
+
+    void on_deny_clicked();
 
 private:
-    Ui::contact *ui;
+    Ui::request *ui;
 };
 
-#endif // CONTACT_H
+#endif // REQUEST_H

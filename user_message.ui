@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>mess</class>
- <widget class="QDialog" name="mess">
+ <class>user_message</class>
+ <widget class="QDialog" name="user_message">
   <property name="geometry">
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>688</width>
-    <height>513</height>
+    <width>610</width>
+    <height>430</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -18,8 +18,8 @@
     <rect>
      <x>10</x>
      <y>10</y>
-     <width>671</width>
-     <height>361</height>
+     <width>591</width>
+     <height>281</height>
     </rect>
    </property>
    <column>
@@ -29,7 +29,7 @@
    </column>
    <column>
     <property name="text">
-     <string>From User</string>
+     <string notr="true">Title</string>
     </property>
     <property name="font">
      <font>
@@ -53,7 +53,7 @@
    </column>
    <column>
     <property name="text">
-     <string>Title</string>
+     <string>From</string>
     </property>
     <property name="font">
      <font>
@@ -80,10 +80,13 @@
    <property name="geometry">
     <rect>
      <x>10</x>
-     <y>390</y>
-     <width>311</width>
-     <height>111</height>
+     <y>310</y>
+     <width>241</width>
+     <height>101</height>
     </rect>
+   </property>
+   <property name="text">
+    <string/>
    </property>
    <property name="alignment">
     <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
@@ -92,11 +95,34 @@
     <bool>true</bool>
    </property>
   </widget>
+  <widget class="QLineEdit" name="mess_reply">
+   <property name="geometry">
+    <rect>
+     <x>270</x>
+     <y>340</y>
+     <width>251</width>
+     <height>71</height>
+    </rect>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="title">
+   <property name="geometry">
+    <rect>
+     <x>300</x>
+     <y>310</y>
+     <width>221</width>
+     <height>20</height>
+    </rect>
+   </property>
+  </widget>
   <widget class="QPushButton" name="back">
    <property name="geometry">
     <rect>
-     <x>600</x>
-     <y>480</y>
+     <x>530</x>
+     <y>400</y>
      <width>75</width>
      <height>23</height>
     </rect>
@@ -105,24 +131,11 @@
     <string>Back</string>
    </property>
   </widget>
-  <widget class="QLineEdit" name="replay_edit">
-   <property name="geometry">
-    <rect>
-     <x>340</x>
-     <y>420</y>
-     <width>251</width>
-     <height>81</height>
-    </rect>
-   </property>
-   <property name="alignment">
-    <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
-   </property>
-  </widget>
   <widget class="QPushButton" name="reply">
    <property name="geometry">
     <rect>
-     <x>600</x>
-     <y>390</y>
+     <x>530</x>
+     <y>340</y>
      <width>75</width>
      <height>23</height>
     </rect>
@@ -131,17 +144,17 @@
     <string>Reply</string>
    </property>
   </widget>
-  <widget class="QLineEdit" name="title">
+  <widget class="QLabel" name="label">
    <property name="geometry">
     <rect>
-     <x>340</x>
-     <y>390</y>
-     <width>251</width>
-     <height>20</height>
+     <x>270</x>
+     <y>310</y>
+     <width>47</width>
+     <height>21</height>
     </rect>
    </property>
-   <property name="alignment">
-    <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
+   <property name="text">
+    <string>Title</string>
    </property>
   </widget>
  </widget>

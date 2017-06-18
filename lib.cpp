@@ -1,9 +1,9 @@
 #include "lib.h"
 #include "ui_lib.h"
-#include <QMessageBox>
+
 #include <QDialog>
 #include <QTreeWidget>
-#include <QDate>
+#include <QDateTime>
 //#define MIN(x,y) ((x) < (y) ? (x) : (y))
 lib::lib(QWidget *parent) :
     QDialog(parent),
@@ -39,8 +39,36 @@ lib::lib(QWidget *parent) :
     if(qry.value("user_role").toInt()==3||qry.value("user_role").toInt()==2) ui->admin->setVisible(false);
     if(qry.value("user_role").toInt()==1||qry.value("user_role").toInt()==3) ui->library->setVisible(false);
     if(qry.value("user_role").toInt()==1||qry.value("user_role").toInt()==2) ui->history->setVisible(false);
+    if(qry.value("user_role").toInt()==1||qry.value("user_role").toInt()==2) ui->message->setVisible(false);
+    if(qry.value("user_role").toInt()==1||qry.value("user_role").toInt()==2) ui->contact->setVisible(false);
+    if(qry.value("user_role").toInt()==1||qry.value("user_role").toInt()==3) ui->lib_message->setVisible(false);
+    if(qry.value("user_role").toInt()==1||qry.value("user_role").toInt()==3) ui->request->setVisible(false);
+    QSqlQuery qry1(db);
+    qry1.prepare("select * from users where user_name='"+username+"'");
+    qry1.exec();
+    qry1.next();
+    QString user_id=qry1.value(0).toString();
+    QSqlQuery qry2(db);
+    qry2.prepare("select * from borrow where borrow_user_id='"+user_id+"'");
+    qry2.exec();
+    while(qry2.next())
+    {
+        QString status=qry2.value(3).toString();
+        if(status!="Returned")
+        {
+            QDateTime now=QDateTime::currentDateTime();
+            QString borrow=qry2.value(2).toString();
+            QDateTime borrow_time=QDateTime::fromString(borrow,"hh:mm:ss dd/MM/yyyy");
+            qint64 time=borrow_time.daysTo(now);
+            if(time>=14)
+            {
+                QMessageBox messa;
+                messa.setText("Some books are overdue. Please check details in History");
+                messa.exec();
+            }
+        }
+    }
     Conclose();
-    //connect(ui->info_button,QPushButton::clicked(),this,lib::info_clicked(tmp));
 
 }
 
@@ -174,11 +202,11 @@ void lib::on_borrow_button_clicked()
     qry2.next();
     QString id=qry2.value(0).toString();
     QString time=QDateTime::currentDateTime().toString("hh:mm:ss dd/MM/yyyy");
-    qry.prepare("insert into borrow (borrow_user_id, borrow_date, borrow_stt) values ('"+id+"','"+time+"', '0')");
+    qry.prepare("insert into borrow (borrow_user_id, borrow_date, borrow_stt) values ('"+id+"','"+time+"', 'Waiting for Confirmation')");
     if(ui->cart->topLevelItemCount()!=0)
     {
         qry.exec();
-        QSqlQuery query1(db);
+        QSqlQuery query1(db),query(db),qery(db),qery1(db);
         query1.prepare("select * from borrow");
         query1.exec();
         query1.last();
@@ -190,43 +218,27 @@ void lib::on_borrow_button_clicked()
         {
             QTreeWidgetItem *item=ui->cart->topLevelItem(i);
             QString book_id=item->text(0);
-            qDebug() << book_id;
-            QSqlQuery query(db);
             query.prepare("insert into lend (lend_borrow_id, lend_book_id) values ('"+borrow_id+"','"+book_id+"')");
             query.exec();
+            qery1.prepare("select book_left from books where book_id='"+book_id+"'");
+            qery1.exec();
+            qery1.next();
+            int left=qery1.value(0).toInt();
+            qery.prepare("update books set book_left=:left where book_id='"+book_id+"'");
+            qery.bindValue(":left",QString::number(left-1));
+            qery.exec();
         }
         ui->cart->clear();
-        //QString book_id=ui->cart->setCurrentItem()->text(0);
-
-        //qDebug() << book_id;
-        /*QSqlQuery query(db);
-        query.prepare("insert into lend (lend_borrow_id, lend_book_id) values ('"+book_id+"','"+time+"')");
-        query.exec();*/
     }
     Conclose();
 }
 
 void lib::on_history_clicked()
 {
-    Conopen();
-    QSqlQuery query(db);
-    query.prepare("select user_temp from users");
-    query.exec();
-    query.next();
-    QString username=query.value(0).toString();
-    QSqlQuery query1(db);
-    query1.prepare("select * from users where user_name='"+username+"'");
-    query1.exec();
-    query1.next();
-    QString user_id=query1.value(0).toString();
-    QSqlQuery query2(db);
-    query2.prepare("select * from borrow where borrow_user_id='"+user_id+"'");
-    query2.exec();
-    query2.next();
-    QString borrow_id=query2.value(0).toString();
-    QString borrow_date=query2.value(2).toString();
-
-    Conclose();
+    this->hide();
+    history his;
+    his.setModal(true);
+    his.exec();
 }
 
 void lib::on_contact_clicked()
@@ -234,4 +246,28 @@ void lib::on_contact_clicked()
     contact cont;
     cont.setModal(true);
     cont.exec();
+}
+
+void lib::on_message_clicked()
+{
+    this->hide();
+    user_message um;
+    um.setModal(true);
+    um.exec();
+}
+
+void lib::on_lib_message_clicked()
+{
+    this->hide();
+    lib_message lm;
+    lm.setModal(true);
+    lm.exec();
+}
+
+void lib::on_request_clicked()
+{
+    this->hide();
+    request req;
+    req.setModal(true);
+    req.exec();
 }
