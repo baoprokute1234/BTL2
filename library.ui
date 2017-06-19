@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>678</width>
-    <height>671</height>
+    <width>675</width>
+    <height>676</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -259,12 +259,16 @@
     <rect>
      <x>280</x>
      <y>520</y>
-     <width>75</width>
+     <width>101</width>
      <height>23</height>
     </rect>
    </property>
    <property name="text">
     <string>Change Detail</string>
+   </property>
+   <property name="icon">
+    <iconset>
+     <normaloff>image/48/pencil.png</normaloff>image/48/pencil.png</iconset>
    </property>
   </widget>
   <widget class="QPushButton" name="update">
@@ -272,12 +276,22 @@
     <rect>
      <x>280</x>
      <y>560</y>
-     <width>75</width>
+     <width>101</width>
      <height>23</height>
     </rect>
    </property>
    <property name="text">
     <string>Update</string>
+   </property>
+   <property name="icon">
+    <iconset>
+     <normaloff>image/numix_circle_for_windows_by_neiio-dag5dlc/Numix Circle For Windows/PNG/accessories-media-converter.png</normaloff>image/numix_circle_for_windows_by_neiio-dag5dlc/Numix Circle For Windows/PNG/accessories-media-converter.png</iconset>
+   </property>
+   <property name="iconSize">
+    <size>
+     <width>20</width>
+     <height>20</height>
+    </size>
    </property>
   </widget>
   <widget class="QPushButton" name="add">
@@ -285,12 +299,16 @@
     <rect>
      <x>280</x>
      <y>600</y>
-     <width>81</width>
+     <width>101</width>
      <height>23</height>
     </rect>
    </property>
    <property name="text">
     <string>Add new book</string>
+   </property>
+   <property name="icon">
+    <iconset>
+     <normaloff>image/48/sign-add.png</normaloff>image/48/sign-add.png</iconset>
    </property>
   </widget>
   <widget class="QPushButton" name="remove">
@@ -298,25 +316,39 @@
     <rect>
      <x>280</x>
      <y>640</y>
-     <width>81</width>
+     <width>101</width>
      <height>23</height>
     </rect>
    </property>
    <property name="text">
     <string>Remove book</string>
    </property>
+   <property name="icon">
+    <iconset>
+     <normaloff>image/48/sign-delete.png</normaloff>image/48/sign-delete.png</iconset>
+   </property>
   </widget>
   <widget class="QPushButton" name="back">
    <property name="geometry">
     <rect>
      <x>590</x>
-     <y>620</y>
-     <width>75</width>
-     <height>23</height>
+     <y>630</y>
+     <width>81</width>
+     <height>41</height>
     </rect>
    </property>
    <property name="text">
     <string>Back</string>
+   </property>
+   <property name="icon">
+    <iconset>
+     <normaloff>image/48/sign-right.png</normaloff>image/48/sign-right.png</iconset>
+   </property>
+   <property name="iconSize">
+    <size>
+     <width>20</width>
+     <height>20</height>
+    </size>
    </property>
   </widget>
   <widget class="QLineEdit" name="search_edit">
@@ -341,7 +373,37 @@
    <property name="text">
     <string>Search</string>
    </property>
+   <property name="icon">
+    <iconset>
+     <normaloff>image/48/search.png</normaloff>image/48/search.png</iconset>
+   </property>
   </widget>
+  <widget class="QLabel" name="label_9">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>671</width>
+     <height>681</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>TextLabel</string>
+   </property>
+   <property name="scaledContents">
+    <bool>true</bool>
+   </property>
+  </widget>
+  <zorder>label_9</zorder>
+  <zorder>tree</zorder>
+  <zorder>groupBox</zorder>
+  <zorder>change_detail</zorder>
+  <zorder>update</zorder>
+  <zorder>add</zorder>
+  <zorder>remove</zorder>
+  <zorder>back</zorder>
+  <zorder>search_edit</zorder>
+  <zorder>search_button</zorder>
  </widget>
  <resources/>
  <connections/>

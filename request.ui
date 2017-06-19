@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>640</width>
+    <width>677</width>
     <height>440</height>
    </rect>
   </property>
@@ -16,9 +16,9 @@
   <widget class="QTreeWidget" name="tree">
    <property name="geometry">
     <rect>
-     <x>200</x>
+     <x>260</x>
      <y>10</y>
-     <width>431</width>
+     <width>411</width>
      <height>192</height>
     </rect>
    </property>
@@ -57,7 +57,7 @@
     <rect>
      <x>10</x>
      <y>10</y>
-     <width>181</width>
+     <width>241</width>
      <height>411</height>
     </rect>
    </property>
@@ -82,40 +82,70 @@
   <widget class="QPushButton" name="back">
    <property name="geometry">
     <rect>
-     <x>560</x>
-     <y>410</y>
-     <width>75</width>
-     <height>23</height>
+     <x>590</x>
+     <y>400</y>
+     <width>81</width>
+     <height>31</height>
     </rect>
    </property>
    <property name="text">
     <string>Back</string>
    </property>
+   <property name="icon">
+    <iconset>
+     <normaloff>image/48/sign-right.png</normaloff>image/48/sign-right.png</iconset>
+   </property>
+   <property name="iconSize">
+    <size>
+     <width>20</width>
+     <height>20</height>
+    </size>
+   </property>
   </widget>
   <widget class="QPushButton" name="accept">
    <property name="geometry">
     <rect>
-     <x>230</x>
-     <y>240</y>
-     <width>111</width>
-     <height>51</height>
+     <x>270</x>
+     <y>220</y>
+     <width>101</width>
+     <height>31</height>
     </rect>
    </property>
    <property name="text">
     <string>Accept</string>
    </property>
+   <property name="icon">
+    <iconset>
+     <normaloff>image/48/sign-check.png</normaloff>image/48/sign-check.png</iconset>
+   </property>
+   <property name="iconSize">
+    <size>
+     <width>20</width>
+     <height>20</height>
+    </size>
+   </property>
   </widget>
   <widget class="QPushButton" name="deny">
    <property name="geometry">
     <rect>
-     <x>460</x>
-     <y>240</y>
-     <width>111</width>
-     <height>51</height>
+     <x>410</x>
+     <y>220</y>
+     <width>101</width>
+     <height>31</height>
     </rect>
    </property>
    <property name="text">
     <string>Deny</string>
+   </property>
+   <property name="icon">
+    <iconset>
+     <normaloff>image/48/sign-error.png</normaloff>image/48/sign-error.png</iconset>
+   </property>
+   <property name="iconSize">
+    <size>
+     <width>20</width>
+     <height>20</height>
+    </size>
    </property>
   </widget>
  </widget>

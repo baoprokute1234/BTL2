@@ -59,6 +59,14 @@ history::history(QWidget *parent) :
     ui->tree->hideColumn(5);
     ui->update->animateClick();
     Conclose();
+    QIcon return_icon(":/new/image/freechartgeany.png");
+    ui->return_book->setIcon(return_icon);
+    QIcon report_icon(":/new/image/apport.png");
+    ui->report_lost->setIcon(report_icon);
+    QIcon back_icon(":/new/image/sign-right.png");
+    ui->back->setIcon(back_icon);
+    QPixmap pix(":/new/image/pink.jpg");
+    ui->label->setPixmap(pix);
 }
 
 history::~history()

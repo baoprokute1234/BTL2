@@ -24,6 +24,12 @@ request::request(QWidget *parent) :
         AddRootLite(borrow_id,username);
     }
     Conclose();
+    QIcon back_icon(":/new/image/sign-right.png");
+    ui->back->setIcon(back_icon);
+    QIcon accept_icon(":/new/image/sign-check.png");
+    ui->accept->setIcon(accept_icon);
+    QIcon deny_icon(":/new/image/sign-error.png");
+    ui->deny->setIcon(deny_icon);
 }
 
 request::~request()

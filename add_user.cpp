@@ -7,6 +7,12 @@ add_user::add_user(QWidget *parent) :
     ui(new Ui::add_user)
 {
     ui->setupUi(this);
+    QIcon add_icon(":/new/image/sign-add.png");
+    ui->pushButton->setIcon(add_icon);
+    QIcon back_icon(":/new/image/sign-right.png");
+    ui->pushButton_2->setIcon(back_icon);
+    QPixmap pix(":/new/image/pink.jpg");
+    ui->label_7->setPixmap(pix);
 }
 
 add_user::~add_user()
@@ -25,9 +31,10 @@ void add_user::on_pushButton_clicked()
     QString realname=ui->real_name->text();
     QString role=ui->role->text();
     qry.prepare("insert into users (user_name, user_passwd, user_role, user_infoname,user_cmnd,user_birthday) values ('"+username+"','"+password+"', '"+role+"', '"+realname+"', '"+cmnd+"', '"+birthday+"')");
-    if(!qry.exec())
-        qDebug() << "??";
     Conclose();
+    QMessageBox message;
+    message.setText("New user added");
+    message.exec();
 }
 
 void add_user::on_pushButton_2_clicked()

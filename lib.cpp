@@ -67,7 +67,35 @@ lib::lib(QWidget *parent) :
         }
     }
     Conclose();
-
+    QPixmap pix(":/new/image/pink.jpg");
+    ui->label_5->setPixmap(pix);
+    QIcon search_icon(":/new/image/search.png");
+    ui->search_button->setIcon(search_icon);
+    QIcon history_icon(":/new/image/calibre.png");
+    ui->history->setIcon(history_icon);
+    QIcon admin_icon(":/new/image/user-male.png");
+    ui->admin->setIcon(admin_icon);
+    QIcon signout_icon(":/new/image/kshutdown.png");
+    ui->sign_out->setIcon(signout_icon);
+    QIcon info_icon(":/new/image/sign-info.png");
+    ui->info_button->setIcon(info_icon);
+    QIcon library_icon(":/new/image/calibre-ebook-edit.png");
+    ui->library->setIcon(library_icon);
+    QIcon message_icon(":/new/image/bubble.png");
+    ui->message->setIcon(message_icon);
+    ui->lib_message->setIcon(message_icon);
+    QIcon request_icon(":/new/image/bullhorn.png");
+    ui->request->setIcon(request_icon);
+    QIcon add_icon(":/new/image/box-in.png");
+    ui->add_button->setIcon(add_icon);
+    QIcon remove_icon(":/new/image/box-out.png");
+    ui->remove_button->setIcon(remove_icon);
+    QIcon borrow_button(":/new/image/shield-ok.png");
+    ui->borrow_button->setIcon(borrow_button);
+    QIcon contact_icon(":/new/image/gmail-offline.png");
+    ui->contact->setIcon(contact_icon);
+    ui->groupBox->setAutoFillBackground(false);
+    ui->groupBox_3->setAutoFillBackground(false);
 }
 
 lib::~lib()
@@ -128,6 +156,7 @@ void lib::on_tree_itemClicked(QTreeWidgetItem *item)
         ui->book_author->setText(qry.value(2).toString());
         ui->book_prize->setText(qry.value(4).toString());
         ui->book_remain->setText(qry.value(5).toString());
+        ui->book_des->setPlainText(qry.value(7).toString());
     }
     Conclose();
 }
@@ -221,7 +250,7 @@ void lib::on_borrow_button_clicked()
         query1.last();
         QString borrow_id=query1.value(0).toString();
         QMessageBox message;
-        message.setText("Borrow Successful");
+        message.setText("Borrow request sent");
         message.exec();
         for(int i=0;i<ui->cart->topLevelItemCount();i++)
         {

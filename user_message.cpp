@@ -31,6 +31,12 @@ user_message::user_message(QWidget *parent) :
     }
     ui->mess_preview->hideColumn(0);
     Conclose();
+    QIcon reply_icon(":/new/image/bubbles-alt.png");
+    ui->reply->setIcon(reply_icon);
+    QIcon back_icon(":/new/image/sign-right.png");
+    ui->back->setIcon(back_icon);
+    QPixmap pix(":/new/image/pink.jpg");
+    ui->label_2->setPixmap(pix);
 }
 
 user_message::~user_message()

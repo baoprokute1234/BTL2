@@ -10,6 +10,8 @@
 #include <QSqlQuery>
 #include <QDebug>
 #include <QMessageBox>
+#include <QIcon>
+#include <QPixmap>
 #include "info.h"
 #include "mainwindow.h"
 #include "admin.h"
@@ -40,7 +42,7 @@ public:
     bool Conopen()
     {
         db=QSqlDatabase::addDatabase("QSQLITE");
-        db.setDatabaseName("C:/Users/Admin/Source Code/BTL2/library.db");
+        db.setDatabaseName("E:/library.db");
         if(db.open()) { qDebug()<<("Connected"); return true;}
         else return false;
     }

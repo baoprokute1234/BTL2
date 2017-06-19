@@ -13,6 +13,9 @@
   <property name="windowTitle">
    <string>Dialog</string>
   </property>
+  <property name="autoFillBackground">
+   <bool>true</bool>
+  </property>
   <widget class="QTreeWidget" name="tree">
    <property name="geometry">
     <rect>
@@ -84,14 +87,24 @@
   <widget class="QPushButton" name="back">
    <property name="geometry">
     <rect>
-     <x>510</x>
-     <y>390</y>
-     <width>75</width>
-     <height>23</height>
+     <x>504</x>
+     <y>382</y>
+     <width>81</width>
+     <height>31</height>
     </rect>
    </property>
    <property name="text">
     <string>Back</string>
+   </property>
+   <property name="icon">
+    <iconset>
+     <normaloff>image/48/sign-right.png</normaloff>image/48/sign-right.png</iconset>
+   </property>
+   <property name="iconSize">
+    <size>
+     <width>20</width>
+     <height>20</height>
+    </size>
    </property>
   </widget>
   <widget class="QPushButton" name="update">
@@ -112,27 +125,69 @@
     <rect>
      <x>10</x>
      <y>370</y>
-     <width>71</width>
-     <height>41</height>
+     <width>101</width>
+     <height>31</height>
     </rect>
    </property>
    <property name="text">
     <string>Return book</string>
    </property>
+   <property name="icon">
+    <iconset>
+     <normaloff>image/numix_circle_for_windows_by_neiio-dag5dlc/Numix Circle For Windows/PNG/freechartgeany.png</normaloff>image/numix_circle_for_windows_by_neiio-dag5dlc/Numix Circle For Windows/PNG/freechartgeany.png</iconset>
+   </property>
+   <property name="iconSize">
+    <size>
+     <width>20</width>
+     <height>20</height>
+    </size>
+   </property>
   </widget>
   <widget class="QPushButton" name="report_lost">
    <property name="geometry">
     <rect>
-     <x>90</x>
+     <x>120</x>
      <y>370</y>
-     <width>75</width>
-     <height>41</height>
+     <width>91</width>
+     <height>31</height>
     </rect>
    </property>
    <property name="text">
     <string>Report lost</string>
    </property>
+   <property name="icon">
+    <iconset>
+     <normaloff>image/numix_circle_for_windows_by_neiio-dag5dlc/Numix Circle For Windows/PNG/apport.png</normaloff>image/numix_circle_for_windows_by_neiio-dag5dlc/Numix Circle For Windows/PNG/apport.png</iconset>
+   </property>
+   <property name="iconSize">
+    <size>
+     <width>20</width>
+     <height>20</height>
+    </size>
+   </property>
   </widget>
+  <widget class="QLabel" name="label">
+   <property name="geometry">
+    <rect>
+     <x>-130</x>
+     <y>-40</y>
+     <width>1051</width>
+     <height>741</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>TextLabel</string>
+   </property>
+   <property name="scaledContents">
+    <bool>true</bool>
+   </property>
+  </widget>
+  <zorder>label</zorder>
+  <zorder>tree</zorder>
+  <zorder>back</zorder>
+  <zorder>update</zorder>
+  <zorder>return_book</zorder>
+  <zorder>report_lost</zorder>
  </widget>
  <resources/>
  <connections/>

@@ -6,36 +6,39 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>601</width>
-    <height>474</height>
+    <width>650</width>
+    <height>506</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>Dialog</string>
   </property>
+  <property name="autoFillBackground">
+   <bool>true</bool>
+  </property>
   <widget class="QPushButton" name="back">
    <property name="geometry">
     <rect>
-     <x>524</x>
-     <y>440</y>
-     <width>21</width>
-     <height>23</height>
+     <x>570</x>
+     <y>470</y>
+     <width>71</width>
+     <height>31</height>
     </rect>
    </property>
    <property name="autoFillBackground">
     <bool>true</bool>
    </property>
    <property name="text">
-    <string/>
+    <string>Back</string>
    </property>
    <property name="icon">
     <iconset>
-     <normaloff>../../../../Pictures/launcher_bfb1.png</normaloff>../../../../Pictures/launcher_bfb1.png</iconset>
+     <normaloff>image/48/sign-right.png</normaloff>image/48/sign-right.png</iconset>
    </property>
    <property name="iconSize">
     <size>
-     <width>32</width>
-     <height>32</height>
+     <width>20</width>
+     <height>20</height>
     </size>
    </property>
   </widget>
@@ -54,9 +57,12 @@
     <rect>
      <x>280</x>
      <y>10</y>
-     <width>311</width>
+     <width>361</width>
      <height>421</height>
     </rect>
+   </property>
+   <property name="autoFillBackground">
+    <bool>false</bool>
    </property>
    <property name="title">
     <string>Details</string>
@@ -223,17 +229,33 @@
    <widget class="QPushButton" name="see_password">
     <property name="geometry">
      <rect>
-      <x>280</x>
+      <x>300</x>
       <y>120</y>
       <width>21</width>
       <height>21</height>
      </rect>
     </property>
+    <property name="autoFillBackground">
+     <bool>false</bool>
+    </property>
     <property name="text">
      <string/>
     </property>
+    <property name="icon">
+     <iconset>
+      <normaloff>image/eye.png</normaloff>image/eye.png</iconset>
+    </property>
+    <property name="iconSize">
+     <size>
+      <width>20</width>
+      <height>20</height>
+     </size>
+    </property>
     <property name="checkable">
      <bool>false</bool>
+    </property>
+    <property name="flat">
+     <bool>true</bool>
     </property>
    </widget>
    <widget class="QPushButton" name="change_info">
@@ -241,38 +263,68 @@
      <rect>
       <x>10</x>
       <y>370</y>
-      <width>75</width>
+      <width>101</width>
       <height>31</height>
      </rect>
     </property>
     <property name="text">
      <string>Change Info</string>
     </property>
+    <property name="icon">
+     <iconset>
+      <normaloff>image/48/pencil.png</normaloff>image/48/pencil.png</iconset>
+    </property>
+    <property name="iconSize">
+     <size>
+      <width>20</width>
+      <height>20</height>
+     </size>
+    </property>
    </widget>
    <widget class="QPushButton" name="update">
     <property name="geometry">
      <rect>
-      <x>110</x>
+      <x>140</x>
       <y>370</y>
-      <width>75</width>
+      <width>71</width>
       <height>31</height>
      </rect>
     </property>
     <property name="text">
      <string>Update</string>
     </property>
+    <property name="icon">
+     <iconset>
+      <normaloff>image/numix_circle_for_windows_by_neiio-dag5dlc/Numix Circle For Windows/PNG/btsync-user.png</normaloff>image/numix_circle_for_windows_by_neiio-dag5dlc/Numix Circle For Windows/PNG/btsync-user.png</iconset>
+    </property>
+    <property name="iconSize">
+     <size>
+      <width>20</width>
+      <height>20</height>
+     </size>
+    </property>
    </widget>
    <widget class="QPushButton" name="reset">
     <property name="geometry">
      <rect>
-      <x>200</x>
+      <x>240</x>
       <y>370</y>
-      <width>91</width>
+      <width>111</width>
       <height>31</height>
      </rect>
     </property>
     <property name="text">
      <string>Reset Password</string>
+    </property>
+    <property name="icon">
+     <iconset>
+      <normaloff>image/numix_circle_for_windows_by_neiio-dag5dlc/Numix Circle For Windows/PNG/am2r.png</normaloff>image/numix_circle_for_windows_by_neiio-dag5dlc/Numix Circle For Windows/PNG/am2r.png</iconset>
+    </property>
+    <property name="iconSize">
+     <size>
+      <width>20</width>
+      <height>20</height>
+     </size>
     </property>
    </widget>
    <widget class="QLineEdit" name="real_name">
@@ -305,33 +357,41 @@
   <widget class="QPushButton" name="pushButton">
    <property name="geometry">
     <rect>
-     <x>290</x>
+     <x>280</x>
      <y>440</y>
-     <width>75</width>
+     <width>101</width>
      <height>23</height>
     </rect>
    </property>
    <property name="text">
     <string>Add new user</string>
    </property>
+   <property name="icon">
+    <iconset>
+     <normaloff>image/48/sign-add.png</normaloff>image/48/sign-add.png</iconset>
+   </property>
   </widget>
   <widget class="QPushButton" name="delete_2">
    <property name="geometry">
     <rect>
-     <x>370</x>
+     <x>390</x>
      <y>440</y>
-     <width>75</width>
+     <width>81</width>
      <height>23</height>
     </rect>
    </property>
    <property name="text">
     <string>Delete user</string>
    </property>
+   <property name="icon">
+    <iconset>
+     <normaloff>image/48/sign-delete.png</normaloff>image/48/sign-delete.png</iconset>
+   </property>
   </widget>
   <widget class="QPushButton" name="message">
    <property name="geometry">
     <rect>
-     <x>450</x>
+     <x>480</x>
      <y>440</y>
      <width>75</width>
      <height>23</height>
@@ -340,7 +400,34 @@
    <property name="text">
     <string>Message</string>
    </property>
+   <property name="icon">
+    <iconset>
+     <normaloff>image/48/bubble.png</normaloff>image/48/bubble.png</iconset>
+   </property>
   </widget>
+  <widget class="QLabel" name="label_8">
+   <property name="geometry">
+    <rect>
+     <x>-80</x>
+     <y>-30</y>
+     <width>921</width>
+     <height>691</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>TextLabel</string>
+   </property>
+   <property name="scaledContents">
+    <bool>true</bool>
+   </property>
+  </widget>
+  <zorder>label_8</zorder>
+  <zorder>back</zorder>
+  <zorder>list</zorder>
+  <zorder>groupBox</zorder>
+  <zorder>pushButton</zorder>
+  <zorder>delete_2</zorder>
+  <zorder>message</zorder>
  </widget>
  <resources/>
  <connections/>

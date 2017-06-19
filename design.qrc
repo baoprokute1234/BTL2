@@ -1,6 +1,38 @@
 <RCC>
     <qresource prefix="/new">
+        <file>image/texture.png</file>
+        <file>image/noavatar.png</file>
+        <file>image/default.png</file>
         <file>image/texture.jpg</file>
+        <file>image/Untitled.png</file>
+        <file>image/accessories-media-converter.png</file>
+        <file>image/key.png</file>
+        <file>image/profile.png</file>
+        <file>image/sign-right.png</file>
+        <file>image/pencil.png</file>
+        <file>image/box-in.png</file>
+        <file>image/box-out.png</file>
+        <file>image/bubble.png</file>
+        <file>image/bullhorn.png</file>
+        <file>image/calibre.png</file>
+        <file>image/calibre-ebook-edit.png</file>
+        <file>image/gmail-offline.png</file>
+        <file>image/kshutdown.png</file>
+        <file>image/search.png</file>
+        <file>image/shield-ok.png</file>
+        <file>image/sign-info.png</file>
+        <file>image/user-male.png</file>
+        <file>image/sign-add.png</file>
+        <file>image/am2r.png</file>
+        <file>image/fly.png</file>
+        <file>image/apport.png</file>
+        <file>image/freechartgeany.png</file>
+        <file>image/bubbles-alt.png</file>
+        <file>image/sign-delete.png</file>
+        <file>image/sign-check.png</file>
+        <file>image/sign-error.png</file>
+        <file>image/pink.jpg</file>
+        <file>image/eye.png</file>
     </qresource>
     <qresource prefix="/new/db">
         <file>db/library.db</file>

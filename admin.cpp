@@ -15,6 +15,24 @@ admin::admin(QWidget *parent) :
         ui->list->addItem(qry.value("user_name").toString());
     }
     Conclose();
+    QIcon update_icon(":/new/image/accessories-media-converter.png");
+    ui->update->setIcon(update_icon);
+    QIcon change_icon(":/new/image/pencil.png");
+    ui->change_info->setIcon(change_icon);
+    QIcon see_icon(":/new/image/eye.png");
+    ui->see_password->setIcon(see_icon);
+    QIcon reset_icon(":/new/image/am2r.png");
+    ui->reset->setIcon(reset_icon);
+    QIcon add_icon(":/new/image/sign-add.png");
+    ui->pushButton->setIcon(add_icon);
+    QIcon delete_icon(":/new/image/sign-delete.png");
+    ui->delete_2->setIcon(delete_icon);
+    QIcon message_icon(":/new/image/bubble.png");
+    ui->message->setIcon(message_icon);
+    QIcon back_icon(":/new/image/sign-right.png");
+    ui->back->setIcon(back_icon);
+    QPixmap pix(":/new/image/pink.jpg");
+    ui->label_8->setPixmap(pix);
 }
 
 admin::~admin()
@@ -78,7 +96,17 @@ void admin::on_reset_clicked()
     QString new_password = username;
     qry.prepare("update users set user_name='"+username+"',user_passwd='"+new_password+"' where user_name='"+username+"'");
     qry.exec();
+    QListWidgetItem *item = ui->list->currentItem();
+    QString username1=item->text();
+    QSqlQuery query(db);
+    query.prepare("select user_passwd from users where user_name='"+username1+"'");
+    query.exec();
+    query.next();
+    ui->user_passwd->setText(query.value(0).toString());
     Conclose();
+    QMessageBox message;
+    message.setText("Password resetted");
+    message.exec();
 }
 
 void admin::on_update_clicked()
@@ -99,6 +127,9 @@ void admin::on_update_clicked()
     ui->user_role->setReadOnly(true);
     ui->user_cmnd->setReadOnly(true);
     ui->real_name->setReadOnly(true);
+    QMessageBox message;
+    message.setText("Info updated");
+    message.exec();
 }
 
 void admin::on_pushButton_clicked()

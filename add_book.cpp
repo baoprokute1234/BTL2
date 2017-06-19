@@ -6,6 +6,12 @@ add_book::add_book(QWidget *parent) :
     ui(new Ui::add_book)
 {
     ui->setupUi(this);
+    QIcon add_icon(":/new/image/sign-add.png");
+    ui->add->setIcon(add_icon);
+    QIcon back_icon(":/new/image/sign-right.png");
+    ui->back->setIcon(back_icon);
+    QPixmap pix(":/new/image/pink.jpg");
+    ui->label_6->setPixmap(pix);
 }
 
 add_book::~add_book()
@@ -25,6 +31,9 @@ void add_book::on_add_clicked()
     qry.prepare("insert into users (book_name, book_author, book_stock, book_left,book_prize,book_date_in) values ('"+name+"','"+author+"', '"+stock+"', '"+stock+"', '"+prize+"', '"+date_in+"')");
     qry.exec();
     Conclose();
+    QMessageBox message;
+    message.setText("New book added");
+    message.exec();
 }
 
 void add_book::on_back_clicked()

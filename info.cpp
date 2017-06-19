@@ -29,8 +29,22 @@ info::info(QWidget *parent) :
         query1.next();
         ui->role->setText(query1.value("user_rolename").toString());
     }
-
     Conclose();
+    QIcon update_icon(":/new/image/accessories-media-converter.png");
+    ui->update_password->setIcon(update_icon);
+    QIcon tab2_icon(":/new/image/key.png");
+    ui->tabWidget->setTabIcon(1,tab2_icon);
+    QIcon tab1_icon(":/new/image/profile.png");
+    ui->tabWidget->setTabIcon(0,tab1_icon);
+    QIcon back_icon(":/new/image/sign-right.png");
+    ui->back_button->setIcon(back_icon);
+    QIcon change_icon(":/new/image/pencil.png");
+    ui->change_info->setIcon(change_icon);
+    ui->update->setIcon(update_icon);
+    QPixmap pix(":/new/image/pink.jpg");
+    ui->label_9->setPixmap(pix);
+    ui->label_10->setPixmap(pix);
+    ui->label_11->setPixmap(pix);
 }
 
 info::~info()
@@ -60,6 +74,9 @@ void info::on_update_clicked()
     ui->real_name->setReadOnly(true);
     ui->cmnd->setReadOnly(true);
     ui->birthday->setReadOnly(true);
+    QMessageBox message;
+    message.setText("Info updated");
+    message.exec();
 }
 
 void info::on_update_password_clicked()
@@ -82,6 +99,9 @@ void info::on_update_password_clicked()
         ui->status->setText("Success");
     }
     Conclose();
+    QMessageBox message;
+    message.setText("Password updated");
+    message.exec();
 }
 void info::on_back_button_clicked()
 {

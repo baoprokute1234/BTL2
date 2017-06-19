@@ -19,10 +19,10 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(ui->password_edit, SIGNAL(returnPressed()),ui->login,SIGNAL(clicked()));
     this->setWindowTitle("Sign in");
     if(db.open()) ui->status->setText("Connected");
-    QPixmap pix(":/new/image/texture.jpg");
+    QPixmap pix(":/new/image/default.png");
     ui->label_2->setPixmap(pix);
-    /*QDate date(2012,12,10);
-    qDebug() << date.daysTo(QDate::currentDate());*/
+    QPixmap pix2(":/new/image/texture.jpg");
+    ui->label->setPixmap(pix2);
 }
 
 MainWindow::~MainWindow()

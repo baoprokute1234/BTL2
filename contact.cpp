@@ -6,8 +6,10 @@ contact::contact(QWidget *parent) :
     ui(new Ui::contact)
 {
     ui->setupUi(this);
-
-    //qDebug() << send_to;
+    QIcon send_icon(":/new/image/fly.png");
+    ui->send->setIcon(send_icon);
+    QPixmap pix(":/new/image/pink.jpg");
+    ui->label_5->setPixmap(pix);
 }
 
 contact::~contact()

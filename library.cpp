@@ -21,25 +21,26 @@ library::library(QWidget *parent) :
         AddRoot(id,name,author);
     }
     Conclose();
+    QIcon change_icon(":/new/image/pencil.png");
+    ui->change_detail->setIcon(change_icon);
+    QIcon update_icon(":/new/image/accessories-media-converter.png");
+    ui->update->setIcon(update_icon);
+    QIcon remove_icon(":/new/image/sign-delete.png");
+    ui->remove->setIcon(remove_icon);
+    QIcon add_icon(":/new/image/sign-add.png");
+    ui->add->setIcon(add_icon);
+    QIcon back_icon(":/new/image/sign-right.png");
+    ui->back->setIcon(back_icon);
+    QIcon search_icon(":/new/image/search.png");
+    ui->search_button->setIcon(search_icon);
+    QPixmap pix(":/new/image/pink.jpg");
+    ui->label_9->setPixmap(pix);
 }
 
 library::~library()
 {
     delete ui;
 }
-
-/*void library::Khoitao()
-{
-    QSqlQueryModel *modal = new QSqlQueryModel();
-    Conopen();
-    QSqlQuery *qry = new QSqlQuery(db);
-    qry->prepare("select * from books");
-    qry->exec();
-    modal->setQuery(*qry);
-    ui->tree->setModel(modal);
-    delete qry;
-    Conclose();
-}*/
 
 void library::AddRoot(QString id,QString name,QString author)
 {
@@ -107,6 +108,9 @@ void library::on_update_clicked()
         AddRoot(id,name,author);
     }
     Conclose();
+    QMessageBox message;
+    message.setText("Updated");
+    message.exec();
 }
 
 void library::on_back_clicked()
