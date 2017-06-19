@@ -45,6 +45,7 @@ info::info(QWidget *parent) :
     ui->label_9->setPixmap(pix);
     ui->label_10->setPixmap(pix);
     ui->label_11->setPixmap(pix);
+    this->setWindowTitle("Personal Information");
 }
 
 info::~info()

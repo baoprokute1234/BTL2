@@ -16,6 +16,7 @@ mess::mess(QWidget *parent) :
     QPixmap pix(":/new/image/pink.jpg");
     ui->label->setPixmap(pix);
     ui->mess_preview->header()->resizeSection(3,200);
+    this->setWindowTitle("Messages to Admin");
 }
 
 mess::~mess()

@@ -8,7 +8,7 @@ library::library(QWidget *parent) :
     ui->setupUi(this);
     connect(ui->search_edit, SIGNAL(returnPressed()),ui->search_button,SIGNAL(clicked()));
     ui->tree->header()->resizeSection(1,350);
-    this->setWindowTitle("Main Window");
+    this->setWindowTitle("Book Management");
     Conopen();
     QSqlQuery query1(db);
     query1.prepare("select book_id,book_name,book_author from books");

@@ -10,6 +10,7 @@ contact::contact(QWidget *parent) :
     ui->send->setIcon(send_icon);
     QPixmap pix(":/new/image/pink.jpg");
     ui->label_5->setPixmap(pix);
+    this->setWindowTitle("Contact");
 }
 
 contact::~contact()

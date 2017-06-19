@@ -12,6 +12,7 @@ add_book::add_book(QWidget *parent) :
     ui->back->setIcon(back_icon);
     QPixmap pix(":/new/image/pink.jpg");
     ui->label_6->setPixmap(pix);
+    this->setWindowTitle("Add Book");
 }
 
 add_book::~add_book()

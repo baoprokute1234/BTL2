@@ -37,6 +37,7 @@ user_message::user_message(QWidget *parent) :
     ui->back->setIcon(back_icon);
     QPixmap pix(":/new/image/pink.jpg");
     ui->label_2->setPixmap(pix);
+    this->setWindowTitle("Messages to User");
 }
 
 user_message::~user_message()

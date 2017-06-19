@@ -31,6 +31,7 @@ admin::admin(QWidget *parent) :
     ui->back->setIcon(back_icon);
     QPixmap pix(":/new/image/pink.jpg");
     ui->label_8->setPixmap(pix);
+    this->setWindowTitle("Administrator Tool");
 }
 
 admin::~admin()

@@ -69,6 +69,7 @@ history::history(QWidget *parent) :
     ui->back->setIcon(back_icon);
     QPixmap pix(":/new/image/pink.jpg");
     ui->label->setPixmap(pix);
+    this->setWindowTitle("Borrow History");
 }
 
 history::~history()

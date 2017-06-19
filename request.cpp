@@ -32,6 +32,7 @@ request::request(QWidget *parent) :
     ui->deny->setIcon(deny_icon);
     QPixmap pix(":/new/image/pink.jpg");
     ui->label->setPixmap(pix);
+    this->setWindowTitle("Borrow Request");
 }
 
 request::~request()

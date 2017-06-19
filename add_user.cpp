@@ -13,6 +13,7 @@ add_user::add_user(QWidget *parent) :
     ui->pushButton_2->setIcon(back_icon);
     QPixmap pix(":/new/image/pink.jpg");
     ui->label_7->setPixmap(pix);
+    this->setWindowTitle("Add User");
 }
 
 add_user::~add_user()
