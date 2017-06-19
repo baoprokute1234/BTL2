@@ -34,7 +34,7 @@ public:
     bool Conopen()
     {
         db=QSqlDatabase::addDatabase("QSQLITE");
-        db.setDatabaseName("E:/library.db");
+        db.setDatabaseName("library.db");
         if(db.open()) { qDebug()<<("Connected"); return true;}
         else return false;
     }
@@ -46,10 +46,6 @@ private slots:
     void on_back_clicked();
 
     void on_list_clicked();
-
-    void on_see_password_pressed();
-
-    void on_see_password_released();
 
     void on_change_info_clicked();
 

@@ -42,7 +42,7 @@ public:
     bool Conopen()
     {
         db=QSqlDatabase::addDatabase("QSQLITE");
-        db.setDatabaseName("E:/library.db");
+        db.setDatabaseName("library.db");
         if(db.open()) { qDebug()<<("Connected"); return true;}
         else return false;
     }

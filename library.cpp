@@ -67,6 +67,7 @@ void library::on_tree_itemClicked(QTreeWidgetItem *item)
         ui->stock->setText(qry.value(3).toString());
         ui->prize->setText(qry.value(4).toString());
         ui->left->setText(qry.value(5).toString());
+        ui->book_des->setPlainText(qry.value(7).toString());
         QDate date=QDate::fromString(qry.value(6).toString(),"dd/MM/yyyy");
         ui->date_in->setDate(date);
     }
@@ -81,6 +82,7 @@ void library::on_change_detail_clicked()
     ui->left->setReadOnly(false);
     ui->prize->setReadOnly(false);
     ui->date_in->setReadOnly(false);
+    ui->book_des->setReadOnly(false);
 }
 
 void library::on_update_clicked()
@@ -93,8 +95,9 @@ void library::on_update_clicked()
     QString left=ui->left->text();
     QString prize=ui->prize->text();
     QString date_in=ui->date_in->date().toString("dd/MM/yyyy");
+    QString book_des=ui->book_des->toPlainText();
     QSqlQuery qry(db);
-    qry.prepare("update books set book_name='"+name+"',book_author='"+author+"',book_prize='"+prize+"',book_stock='"+stock+"',book_left='"+left+"',book_date_in='"+date_in+"' where book_id='"+id+"'");
+    qry.prepare("update books set book_name='"+name+"',book_author='"+author+"',book_prize='"+prize+"',book_stock='"+stock+"',book_left='"+left+"',book_date_in='"+date_in+"',book_description='"+book_des+"' where book_id='"+id+"'");
     qry.exec();
     ui->tree->clear();
     QSqlQuery query1(db);
@@ -111,6 +114,13 @@ void library::on_update_clicked()
     QMessageBox message;
     message.setText("Updated");
     message.exec();
+    ui->name->setReadOnly(true);
+    ui->author->setReadOnly(true);
+    ui->stock->setReadOnly(true);
+    ui->left->setReadOnly(true);
+    ui->prize->setReadOnly(true);
+    ui->date_in->setReadOnly(true);
+    ui->book_des->setReadOnly(true);
 }
 
 void library::on_back_clicked()

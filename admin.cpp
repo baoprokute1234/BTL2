@@ -19,8 +19,6 @@ admin::admin(QWidget *parent) :
     ui->update->setIcon(update_icon);
     QIcon change_icon(":/new/image/pencil.png");
     ui->change_info->setIcon(change_icon);
-    QIcon see_icon(":/new/image/eye.png");
-    ui->see_password->setIcon(see_icon);
     QIcon reset_icon(":/new/image/am2r.png");
     ui->reset->setIcon(reset_icon);
     QIcon add_icon(":/new/image/sign-add.png");
@@ -66,17 +64,6 @@ void admin::on_list_clicked()
         ui->real_name->setText(qry.value("user_infoname").toString());
     }
     Conclose();
-}
-
-
-void admin::on_see_password_pressed()
-{
-    ui->user_passwd->setEchoMode(QLineEdit::Normal);
-}
-
-void admin::on_see_password_released()
-{
-    ui->user_passwd->setEchoMode(QLineEdit::Password);
 }
 
 void admin::on_change_info_clicked()
