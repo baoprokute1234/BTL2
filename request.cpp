@@ -30,6 +30,8 @@ request::request(QWidget *parent) :
     ui->accept->setIcon(accept_icon);
     QIcon deny_icon(":/new/image/sign-error.png");
     ui->deny->setIcon(deny_icon);
+    QPixmap pix(":/new/image/pink.jpg");
+    ui->label->setPixmap(pix);
 }
 
 request::~request()

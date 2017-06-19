@@ -151,9 +151,9 @@
   <widget class="QLineEdit" name="title">
    <property name="geometry">
     <rect>
-     <x>340</x>
+     <x>380</x>
      <y>390</y>
-     <width>251</width>
+     <width>211</width>
      <height>20</height>
     </rect>
    </property>
@@ -177,6 +177,27 @@
     <bool>true</bool>
    </property>
   </widget>
+  <widget class="QLabel" name="label_2">
+   <property name="geometry">
+    <rect>
+     <x>340</x>
+     <y>390</y>
+     <width>47</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Title</string>
+   </property>
+  </widget>
+  <zorder>label</zorder>
+  <zorder>mess_preview</zorder>
+  <zorder>mess_box</zorder>
+  <zorder>back</zorder>
+  <zorder>replay_edit</zorder>
+  <zorder>reply</zorder>
+  <zorder>title</zorder>
+  <zorder>label_2</zorder>
  </widget>
  <resources/>
  <connections/>

@@ -218,12 +218,12 @@
      <rect>
       <x>20</x>
       <y>320</y>
-      <width>47</width>
+      <width>81</width>
       <height>21</height>
      </rect>
     </property>
     <property name="text">
-     <string>CMND</string>
+     <string>Identification</string>
     </property>
    </widget>
    <widget class="QPushButton" name="change_info">

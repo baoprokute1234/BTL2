@@ -26,7 +26,7 @@
     </rect>
    </property>
    <property name="currentIndex">
-    <number>1</number>
+    <number>0</number>
    </property>
    <property name="iconSize">
     <size>
@@ -138,12 +138,12 @@
       <rect>
        <x>10</x>
        <y>80</y>
-       <width>47</width>
+       <width>71</width>
        <height>16</height>
       </rect>
      </property>
      <property name="text">
-      <string>CMND</string>
+      <string>Identification</string>
      </property>
     </widget>
     <widget class="QLabel" name="label_4">

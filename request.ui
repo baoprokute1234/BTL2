@@ -148,6 +148,25 @@
     </size>
    </property>
   </widget>
+  <widget class="QLabel" name="label">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>681</width>
+     <height>441</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>TextLabel</string>
+   </property>
+  </widget>
+  <zorder>label</zorder>
+  <zorder>tree</zorder>
+  <zorder>list</zorder>
+  <zorder>back</zorder>
+  <zorder>accept</zorder>
+  <zorder>deny</zorder>
  </widget>
  <resources/>
  <connections/>

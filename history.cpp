@@ -58,6 +58,8 @@ history::history(QWidget *parent) :
     ui->tree->hideColumn(0);
     ui->tree->hideColumn(5);
     ui->update->animateClick();
+    ui->tree->header()->resizeSection(1,240);
+    ui->tree->header()->resizeSection(3,120);
     Conclose();
     QIcon return_icon(":/new/image/freechartgeany.png");
     ui->return_book->setIcon(return_icon);

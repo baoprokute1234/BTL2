@@ -15,6 +15,7 @@ mess::mess(QWidget *parent) :
     ui->back->setIcon(back_icon);
     QPixmap pix(":/new/image/pink.jpg");
     ui->label->setPixmap(pix);
+    ui->mess_preview->header()->resizeSection(3,200);
 }
 
 mess::~mess()
