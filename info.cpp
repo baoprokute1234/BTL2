@@ -23,11 +23,7 @@ info::info(QWidget *parent) :
         ui->user_name->setText(qry.value("user_name").toString());
         ui->cmnd->setText(qry.value("user_cmnd").toString());
         ui->birthday->setText(qry.value("user_birthday").toString());
-        QString role = qry.value("user_role").toString();
-        query1.prepare("select * from roles where user_role='"+role+"' ");
-        query1.exec();
-        query1.next();
-        ui->role->setText(query1.value("user_rolename").toString());
+        ui->role->setText(qry.value("user_role").toString());
     }
     Conclose();
     QIcon update_icon(":/new/image/accessories-media-converter.png");

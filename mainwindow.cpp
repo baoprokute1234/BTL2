@@ -23,6 +23,7 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->label_2->setPixmap(pix);
     QPixmap pix2(":/new/image/texture.jpg");
     ui->label->setPixmap(pix2);
+    ui->about->setStyleSheet("background-color: rgb(255, 0, 0); color: rgb(255, 255, 255)");
 }
 
 MainWindow::~MainWindow()
@@ -67,4 +68,15 @@ void MainWindow::on_login_clicked()
         }
         if(count<1) ui->status->setText("Login Failed");
     }
+}
+
+void MainWindow::on_about_clicked()
+{
+    QMessageBox message;
+    message.setText("BTBN team: \n"
+                    "Trương Như Bảo - 1610204 \n"
+                    "Nguyễn Trương Ngọc Bách - 1610155 \n"
+                    "Võ Khắc Trí - 1613754 \n"
+                    "Nguyễn Minh Nhựt - 1612483");
+    message.exec();
 }

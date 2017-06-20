@@ -128,10 +128,27 @@
      <bool>true</bool>
     </property>
    </widget>
+   <widget class="QPushButton" name="about">
+    <property name="geometry">
+     <rect>
+      <x>384</x>
+      <y>382</y>
+      <width>71</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>About us</string>
+    </property>
+    <property name="flat">
+     <bool>true</bool>
+    </property>
+   </widget>
    <zorder>label</zorder>
    <zorder>label_2</zorder>
    <zorder>welcome</zorder>
    <zorder>signin</zorder>
+   <zorder>about</zorder>
   </widget>
  </widget>
  <layoutdefault spacing="6" margin="11"/>

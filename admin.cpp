@@ -131,12 +131,25 @@ void admin::on_pushButton_clicked()
 void admin::on_delete_2_clicked()
 {
     Conopen();
+    QSqlQuery qry1(db);
     QString username=ui->username->text();
     QSqlQuery qry(db);
+    qry1.prepare("select user_role from users where user_name='"+username+"'");
+    qry1.exec();
+    qry1.next();
+    if(qry1.value(0).toString().compare("admin")!=0)
+    {
     qry.prepare("delete from users where user_name='"+username+"'");
     qry.exec();
     QListWidgetItem *item = ui->list->takeItem(ui->list->currentRow());
     delete item;
+    }
+    else
+    {
+        QMessageBox message;
+        message.setText("Admin account cannot be deleted");
+        message.exec();
+    }
     Conclose();
 }
 
