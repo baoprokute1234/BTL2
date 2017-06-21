@@ -51,7 +51,7 @@ void mess::on_mess_preview_itemClicked(QTreeWidgetItem *item)
     qry.prepare("select * from message_to_admin where mess_id='"+mess_id+"'");
     qry.exec();
     qry.next();
-    ui->mess_box->setText(qry.value(3).toString());
+    ui->mess_box->setPlainText(qry.value(3).toString());
     qry1.prepare("update message_to_admin set mess_status='Read' where mess_id='"+mess_id+"'");
     qry1.exec();
     Conclose();
@@ -62,18 +62,19 @@ void mess::on_reply_clicked()
 {
     Conopen();
     QSqlQuery qry(db),qry1(db);
-    /*QTreeWidgetItem item = currentItem();
-    QString mess_id = item->text(0);*/
     qry1.prepare("select * from message_to_admin where mess_id='"+mess_id+"'");
     qry1.exec();
     qry1.next();
     QString id=qry1.value(1).toString();
     QString title=ui->title->text();
-    QString content = ui->replay_edit->text();
+    QString content = ui->replay_edit->toPlainText();
     QString time=QDateTime::currentDateTime().toString("hh:mm:ss dd/MM/yyyy");
     qry.prepare("insert into message_to_user (mess_to_user_id, mess_title, mess_content,mess_date ,mess_status,mess_from) values ('"+id+"','"+title+"', '"+content+"', '"+time+"', 'Unread', 'Admin')");
     qry.exec();
     Conclose();
+    QMessageBox message;
+    message.setText("Message sent");
+    message.exec();
 }
 
 void mess::ReloadView()

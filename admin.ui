@@ -109,19 +109,6 @@
      <bool>true</bool>
     </property>
    </widget>
-   <widget class="QLineEdit" name="user_role">
-    <property name="geometry">
-     <rect>
-      <x>120</x>
-      <y>220</y>
-      <width>151</width>
-      <height>20</height>
-     </rect>
-    </property>
-    <property name="readOnly">
-     <bool>true</bool>
-    </property>
-   </widget>
    <widget class="QLineEdit" name="user_birthday">
     <property name="geometry">
      <rect>
@@ -319,6 +306,47 @@
     </property>
     <property name="text">
      <string>Real name</string>
+    </property>
+   </widget>
+   <widget class="QComboBox" name="user_role">
+    <property name="geometry">
+     <rect>
+      <x>120</x>
+      <y>220</y>
+      <width>151</width>
+      <height>22</height>
+     </rect>
+    </property>
+    <property name="frame">
+     <bool>true</bool>
+    </property>
+    <item>
+     <property name="text">
+      <string>Admin</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Librarian</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Reader</string>
+     </property>
+    </item>
+   </widget>
+   <widget class="QLabel" name="hide_role">
+    <property name="geometry">
+     <rect>
+      <x>120</x>
+      <y>220</y>
+      <width>151</width>
+      <height>21</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string/>
     </property>
    </widget>
   </widget>

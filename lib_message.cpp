@@ -72,6 +72,9 @@ void lib_message::on_reply_clicked()
     qry.prepare("insert into message_to_user (mess_to_user_id, mess_title, mess_content,mess_date ,mess_status,mess_from) values ('"+id+"','"+title+"', '"+content+"', '"+time+"', 'Unread', 'Librarian')");
     qry.exec();
     Conclose();
+    QMessageBox message;
+    message.setText("Message sent");
+    message.exec();
 }
 
 void lib_message::ReloadView()

@@ -1,6 +1,6 @@
 #include "user_message.h"
 #include "ui_user_message.h"
-
+QString id,user_id;
 user_message::user_message(QWidget *parent) :
     QDialog(parent),
     ui(new Ui::user_message)
@@ -17,8 +17,8 @@ user_message::user_message(QWidget *parent) :
     qry1.prepare("select * from users where user_name='"+username+"'");
     qry1.exec();
     qry1.next();
-    QString id=qry1.value(0).toString();
-    qry2.prepare("select * from message_to_user where mess_to_user_id='"+id+"'");
+    user_id=qry1.value(0).toString();
+    qry2.prepare("select * from message_to_user where mess_to_user_id='"+user_id+"'");
     qry2.exec();
     while(qry2.next())
     {
@@ -48,13 +48,13 @@ user_message::~user_message()
 void user_message::on_mess_preview_itemClicked(QTreeWidgetItem *item)
 {
     Conopen();
-    QString id = item->text(0);
+    id = item->text(0);
     qDebug() << id;
     QSqlQuery qry(db);
     qry.prepare("select * from message_to_user where mess_id='"+id+"'");
     qry.exec();
     qry.next();
-    ui->mess_box->setText(qry.value(3).toString());
+    ui->mess_box->setPlainText(qry.value(3).toString());
     QSqlQuery qry1(db);
     qry1.prepare("update message_to_user set mess_status='Read' where mess_id='"+id+"'");
     qry1.exec();
@@ -84,6 +84,28 @@ void user_message::on_back_clicked()
 void user_message::on_reply_clicked()
 {
     Conopen();
+    QSqlQuery qry(db),qry1(db);
+    qry.prepare("select * from message_to_user where mess_id='"+id+"'");
+    qry.exec();
+    qry.next();
+    QString send_to=qry.value(6).toString();
+    QString title=ui->title->text();
+    QString content=ui->mess_reply->toPlainText();
+    QString time=QDateTime::currentDateTime().toString("hh:mm:ss dd/MM/yyyy");
+    if(send_to.compare("Admin")==0)
+    {
+        qry1.prepare("insert into message_to_admin (mess_from_user_id, mess_title, mess_content,mess_date ,mess_status) values ('"+user_id+"','"+title+"', '"+content+"', '"+time+"', 'Unread')");
+        qry1.exec();
+    }
+    else if(send_to.compare("Librarian")==0)
+    {
+        qry1.prepare("insert into message_to_librarian (mess_from_user_id, mess_title, mess_content,mess_date ,mess_status) values ('"+user_id+"','"+title+"', '"+content+"', '"+time+"', 'Unread')");
+        qry1.exec();
+    }
+    Conclose();
+    QMessageBox message;
+    message.setText("Message sent");
+    message.exec();
 }
 
 void user_message::ReloadView()

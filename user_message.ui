@@ -79,38 +79,6 @@
     </property>
    </column>
   </widget>
-  <widget class="QLineEdit" name="mess_box">
-   <property name="geometry">
-    <rect>
-     <x>10</x>
-     <y>310</y>
-     <width>241</width>
-     <height>101</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string/>
-   </property>
-   <property name="alignment">
-    <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
-   </property>
-   <property name="readOnly">
-    <bool>true</bool>
-   </property>
-  </widget>
-  <widget class="QLineEdit" name="mess_reply">
-   <property name="geometry">
-    <rect>
-     <x>270</x>
-     <y>340</y>
-     <width>251</width>
-     <height>71</height>
-    </rect>
-   </property>
-   <property name="alignment">
-    <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
-   </property>
-  </widget>
   <widget class="QLineEdit" name="title">
    <property name="geometry">
     <rect>
@@ -190,14 +158,37 @@
     <bool>true</bool>
    </property>
   </widget>
+  <widget class="QPlainTextEdit" name="mess_box">
+   <property name="geometry">
+    <rect>
+     <x>10</x>
+     <y>310</y>
+     <width>241</width>
+     <height>101</height>
+    </rect>
+   </property>
+   <property name="readOnly">
+    <bool>true</bool>
+   </property>
+  </widget>
+  <widget class="QPlainTextEdit" name="mess_reply">
+   <property name="geometry">
+    <rect>
+     <x>270</x>
+     <y>340</y>
+     <width>251</width>
+     <height>71</height>
+    </rect>
+   </property>
+  </widget>
   <zorder>label_2</zorder>
   <zorder>mess_preview</zorder>
-  <zorder>mess_box</zorder>
-  <zorder>mess_reply</zorder>
   <zorder>title</zorder>
   <zorder>back</zorder>
   <zorder>reply</zorder>
   <zorder>label</zorder>
+  <zorder>mess_box</zorder>
+  <zorder>mess_reply</zorder>
  </widget>
  <resources/>
  <connections/>

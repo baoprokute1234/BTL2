@@ -49,6 +49,11 @@ void admin::on_back_clicked()
 
 void admin::on_list_clicked()
 {
+    ui->user_birthday->setReadOnly(true);
+    ui->username->setReadOnly(true);
+    ui->hide_role->setVisible(true);
+    ui->user_cmnd->setReadOnly(true);
+    ui->real_name->setReadOnly(true);
     Conopen();
     QSqlQuery qry(db);
     QString username = ui->list->currentItem()->text();
@@ -59,7 +64,10 @@ void admin::on_list_clicked()
         ui->username->setText(qry.value("user_name").toString());
         ui->user_id->setText(qry.value("user_id").toString());
         ui->user_passwd->setText(qry.value("user_passwd").toString());
-        ui->user_role->setText(qry.value("user_role").toString());
+        QString user_role=qry.value(3).toString();
+        if(user_role.compare("Admin")==0) ui->user_role->setCurrentIndex(0);
+        else if(user_role.compare("Librarian")==0) ui->user_role->setCurrentIndex(1);
+        else if(user_role.compare("Reader")==0) ui->user_role->setCurrentIndex(2);
         ui->user_cmnd->setText(qry.value("user_cmnd").toString());
         ui->user_birthday->setText(qry.value("user_birthday").toString());
         ui->real_name->setText(qry.value("user_infoname").toString());
@@ -71,9 +79,16 @@ void admin::on_change_info_clicked()
 {
     ui->user_birthday->setReadOnly(false);
     ui->username->setReadOnly(false);
-    ui->user_role->setReadOnly(false);
     ui->user_cmnd->setReadOnly(false);
     ui->real_name->setReadOnly(false);
+    Conopen();
+    QSqlQuery qry(db);
+    qry.prepare("select user_name from users where user_role='Admin'");
+    qry.exec();
+    qry.next();
+    QString username=ui->list->currentItem()->text();
+    if(username.compare(qry.value(0).toString())!=0) ui->hide_role->setVisible(false);
+    Conclose();
 }
 
 void admin::on_reset_clicked()
@@ -104,7 +119,7 @@ void admin::on_update_clicked()
     QString realname = ui->real_name->text();
     QString cmnd = ui->user_cmnd->text();
     QString birthday = ui->user_birthday->text();
-    QString role = ui->user_role->text();
+    QString role = ui->user_role->currentText();
     qDebug() << username;
     QSqlQuery qry(db);
     qry.prepare("update users set user_name='"+username+"',user_infoname='"+realname+"',user_cmnd='"+cmnd+"',user_birthday='"+birthday+"',user_role='"+role+"' where user_name='"+username+"'");
@@ -112,7 +127,7 @@ void admin::on_update_clicked()
     Conclose();
     ui->user_birthday->setReadOnly(true);
     ui->username->setReadOnly(true);
-    ui->user_role->setReadOnly(true);
+    ui->hide_role->setVisible(true);
     ui->user_cmnd->setReadOnly(true);
     ui->real_name->setReadOnly(true);
     QMessageBox message;
@@ -137,7 +152,7 @@ void admin::on_delete_2_clicked()
     qry1.prepare("select user_role from users where user_name='"+username+"'");
     qry1.exec();
     qry1.next();
-    if(qry1.value(0).toString().compare("admin")!=0)
+    if(qry1.value(0).toString().compare("Admin")!=0)
     {
     qry.prepare("delete from users where user_name='"+username+"'");
     qry.exec();
