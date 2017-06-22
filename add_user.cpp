@@ -1,7 +1,5 @@
 #include "add_user.h"
 #include "ui_add_user.h"
-
-//#inc
 add_user::add_user(QWidget *parent) :
     QDialog(parent),
     ui(new Ui::add_user)
@@ -30,8 +28,9 @@ void add_user::on_pushButton_clicked()
     QString birthday=ui->birthday->text();
     QString cmnd=ui->cmnd->text();
     QString realname=ui->real_name->text();
-    QString role=ui->role->text();
+    QString role=ui->role->currentText();
     qry.prepare("insert into users (user_name, user_passwd, user_role, user_infoname,user_cmnd,user_birthday) values ('"+username+"','"+password+"', '"+role+"', '"+realname+"', '"+cmnd+"', '"+birthday+"')");
+    qry.exec();
     Conclose();
     QMessageBox message;
     message.setText("New user added");

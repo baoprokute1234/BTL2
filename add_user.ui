@@ -49,16 +49,6 @@
     </rect>
    </property>
   </widget>
-  <widget class="QLineEdit" name="role">
-   <property name="geometry">
-    <rect>
-     <x>100</x>
-     <y>110</y>
-     <width>113</width>
-     <height>20</height>
-    </rect>
-   </property>
-  </widget>
   <widget class="QLineEdit" name="birthday">
    <property name="geometry">
     <rect>
@@ -149,12 +139,12 @@
     <rect>
      <x>30</x>
      <y>170</y>
-     <width>47</width>
+     <width>71</width>
      <height>21</height>
     </rect>
    </property>
    <property name="text">
-    <string>CMND</string>
+    <string>Identification</string>
    </property>
   </widget>
   <widget class="QPushButton" name="pushButton">
@@ -213,11 +203,35 @@
     <bool>true</bool>
    </property>
   </widget>
+  <widget class="QComboBox" name="role">
+   <property name="geometry">
+    <rect>
+     <x>100</x>
+     <y>110</y>
+     <width>111</width>
+     <height>22</height>
+    </rect>
+   </property>
+   <item>
+    <property name="text">
+     <string>Admin</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>Librarian</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>Reader</string>
+    </property>
+   </item>
+  </widget>
   <zorder>label_7</zorder>
   <zorder>username</zorder>
   <zorder>password</zorder>
   <zorder>real_name</zorder>
-  <zorder>role</zorder>
   <zorder>birthday</zorder>
   <zorder>label</zorder>
   <zorder>label_2</zorder>
@@ -228,6 +242,7 @@
   <zorder>label_6</zorder>
   <zorder>pushButton</zorder>
   <zorder>pushButton_2</zorder>
+  <zorder>role</zorder>
  </widget>
  <resources/>
  <connections/>
