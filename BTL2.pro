@@ -8,7 +8,7 @@ QT       += core gui sql
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
-TARGET = BTL2
+TARGET = LIBPRO
 TEMPLATE = app
 DESTDIR = $$PWD
 # The following define makes your compiler emit warnings if you use
@@ -71,3 +71,5 @@ FORMS += \
 
 RESOURCES += \
     design.qrc
+
+RC_FILE = myapp.rc
