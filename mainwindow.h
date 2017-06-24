@@ -33,7 +33,6 @@ public:
         if(db.open()) { qDebug()<<("Connected"); return true;}
         else return false;
     }
-
     explicit MainWindow(QWidget *parent = 0);
     ~MainWindow();
 

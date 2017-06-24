@@ -29,7 +29,7 @@ void add_book::on_add_clicked()
     QString stock=ui->stock->text();
     QString prize=ui->prize->text();
     QString date_in=ui->date_in->text();
-    qry.prepare("insert into users (book_name, book_author, book_stock, book_left,book_prize,book_date_in) values ('"+name+"','"+author+"', '"+stock+"', '"+stock+"', '"+prize+"', '"+date_in+"')");
+    qry.prepare("insert into books (book_name, book_author, book_stock, book_left,book_prize,book_date_in) values ('"+name+"','"+author+"', '"+stock+"', '"+stock+"', '"+prize+"', '"+date_in+"')");
     qry.exec();
     Conclose();
     QMessageBox message;
